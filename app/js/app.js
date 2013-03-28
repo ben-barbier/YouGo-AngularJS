@@ -4,7 +4,11 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
   config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: MyCtrl1});
-    $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: MyCtrl2});
-    $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.when('/myRequests',         {templateUrl: 'partials/myRequests.html',         controller: MyCtrl1});
+    $routeProvider.when('/newRequest',         {templateUrl: 'partials/newRequest.html',         controller: MyCtrl2});
+    $routeProvider.when('/validateRequests',   {templateUrl: 'partials/validateRequests.html',   controller: MyCtrl2});
+    $routeProvider.when('/manageUsers',        {templateUrl: 'partials/manageUsers.html',        controller: MyCtrl2});
+    $routeProvider.when('/manageUserTypes',    {templateUrl: 'partials/manageUserTypes.html',    controller: MyCtrl2});
+    $routeProvider.when('/manageRequestTypes', {templateUrl: 'partials/manageRequestTypes.html', controller: MyCtrl2});
+    $routeProvider.otherwise({redirectTo: '/myRequests'});
   }]);
