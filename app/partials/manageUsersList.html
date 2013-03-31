@@ -1,68 +1,97 @@
-<h1>Utilisateurs</h1>
-<div>
-  <div class="alert">
-    Message d'information sur le résultat d'une action
-  </div>
-  <div>
-    <a class="btn btn-primary" href="#/manageUsers">Ajouter un utilisateur</a>
-    <br />
-    <br />
-    <table class="table table-hover table-condensed">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Actif ?</th>
-          <th>Admin ?</th>
-          <th>Nom</th>
-          <th>Email</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>true</td>
-          <td>false</td>
-          <td>Kristina CHUNG</td>
-          <td>kristina.kristina@company.com</td>
-          <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
-          <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>true</td>
-          <td>false</td>
-          <td>Paige CHEN</td>
-          <td>paige.paige@company.com</td>
-          <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
-          <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>true</td>
-          <td>false</td>
-          <td>Sherri MELTON</td>
-          <td>sherri.sherri@company.com</td>
-          <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
-          <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#">YouGo-AngularJS</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="#/myRequests">Mes demandes</a></li>
+          <li><a href="#/newRequest">Nouvelle demande</a></li>
+          <li><a href="#/validateRequests">Valider des demandes</a></li>
+          <li><a href="#/manageUsersList">Gérer les utilisateurs</a></li>
+          <li><a href="#/manageUserTypesList">Gérer les types d'utilisateurs</a></li>
+          <li><a href="#/manageRequestTypesList">Gérer les types de demandes</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
   </div>
 </div>
 
-<!-- Delete User Modal -->
-<div id="deleteUserModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="deleteUserModalLabel">Supprimer le compte utilisateur</h3>
+<div class="container">
+
+  <h1>Utilisateurs</h1>
+  <div>
+    <div class="alert">
+      Message d'information sur le résultat d'une action
+    </div>
+    <div>
+      <a class="btn btn-primary" href="#/manageUsers">Ajouter un utilisateur</a>
+      <br />
+      <br />
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Actif ?</th>
+            <th>Admin ?</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>true</td>
+            <td>false</td>
+            <td>Kristina CHUNG</td>
+            <td>kristina.kristina@company.com</td>
+            <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
+            <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>true</td>
+            <td>false</td>
+            <td>Paige CHEN</td>
+            <td>paige.paige@company.com</td>
+            <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
+            <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>true</td>
+            <td>false</td>
+            <td>Sherri MELTON</td>
+            <td>sherri.sherri@company.com</td>
+            <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
+            <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="modal-body">
-    <p>Etes vous sur de vouloir supprimer le compte utilisateur de<br />Kristina CHUNG ?</p>
+
+  <!-- Delete User Modal -->
+  <div id="deleteUserModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="deleteUserModalLabel">Supprimer le compte utilisateur</h3>
+    </div>
+    <div class="modal-body">
+      <p>Etes vous sur de vouloir supprimer le compte utilisateur de<br />Kristina CHUNG ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <button class="btn btn-danger">Supprimer</button>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-    <button class="btn btn-danger">Supprimer</button>
-  </div>
-</div>
+
+  <div>YouGo-AngularJS: v<span app-version></span></div>
+
+</div> <!-- /container -->

@@ -1,9 +1,38 @@
-<h1>Valider des demandes</h1>
-<div>
-  <a href="http://almende.github.com/chap-links-library/timeline.html">Timeline</a>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#">YouGo-AngularJS</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="#/myRequests">Mes demandes</a></li>
+          <li><a href="#/newRequest">Nouvelle demande</a></li>
+          <li><a href="#/validateRequests">Valider des demandes</a></li>
+          <li><a href="#/manageUsersList">Gérer les utilisateurs</a></li>
+          <li><a href="#/manageUserTypesList">Gérer les types d'utilisateurs</a></li>
+          <li><a href="#/manageRequestTypesList">Gérer les types de demandes</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
 </div>
-<div>
-  ...
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</div>
+
+<div class="container">
+
+  <h1>Valider des demandes</h1>
+  <div>
+    <a href="http://almende.github.com/chap-links-library/timeline.html">Timeline</a>
+  </div>
+  <div>
+    ...
+    Showing of 'interpolate' filter:
+    {{ 'Current version is v%VERSION%.' | interpolate }}
+  </div>
+
+  <div>YouGo-AngularJS: v<span app-version></span></div>
+
+</div> <!-- /container -->

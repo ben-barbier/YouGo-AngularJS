@@ -1,77 +1,106 @@
-<h1>Mes demandes</h1>
-<div>
-  <a href="http://almende.github.com/chap-links-library/timeline.html">Timeline</a>
-</div>
-<div>
-  <table class="table table-hover table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Du</th>
-        <th>Au</th>
-        <th>Observation</th>
-        <th>Réponse</th>
-        <th>Statut</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>RTT</td>
-        <td>22/10/2010</td>
-        <td>24/10/2010</td>
-        <td>S'il vous plait</td>
-        <td></td>
-        <td>En attente</td>
-        <td><a href=""><i class="icon-pencil"></i></a></td>
-        <td><a href="#deleteRequestModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-      </tr>
-      <tr>
-        <td>Congé Payé</td>
-        <td>23/12/2010</td>
-        <td>03/01/2011</td>
-        <td>Vacances de Noel</td>
-        <td></td>
-        <td>En attente</td>
-        <td><a href=""><i class="icon-pencil"></i></a></td>
-        <td><a href="#deleteRequestModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-      </tr>
-      <tr>
-        <td>Congé sans solde</td>
-        <td>17/02/2011</td>
-        <td>17/02/2011</td>
-        <td>RAS</td>
-        <td>OK</td>
-        <td>Validé</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>RTT</td>
-        <td>03/01/2011</td>
-        <td>04/01/2011</td>
-        <td>RAS</td>
-        <td>Pas possible</td>
-        <td>Refusé</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#">YouGo-AngularJS</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="#/myRequests">Mes demandes</a></li>
+          <li><a href="#/newRequest">Nouvelle demande</a></li>
+          <li><a href="#/validateRequests">Valider des demandes</a></li>
+          <li><a href="#/manageUsersList">Gérer les utilisateurs</a></li>
+          <li><a href="#/manageUserTypesList">Gérer les types d'utilisateurs</a></li>
+          <li><a href="#/manageRequestTypesList">Gérer les types de demandes</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
 </div>
 
-<!-- Delete Request Modal -->
-<div id="deleteRequestModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deleteRequestModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="deleteRequestModalLabel">Supprimer la demande de congé</h3>
+<div class="container">
+
+  <h1>Mes demandes</h1>
+  <div>
+    <a href="http://almende.github.com/chap-links-library/timeline.html">Timeline</a>
   </div>
-  <div class="modal-body">
-    <p>Etes vous sur de vouloir supprimer la demande <br /> de RTT du 22/10/2010 au 24/10/2010 ?</p>
+  <div>
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Du</th>
+          <th>Au</th>
+          <th>Observation</th>
+          <th>Réponse</th>
+          <th>Statut</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RTT</td>
+          <td>22/10/2010</td>
+          <td>24/10/2010</td>
+          <td>S'il vous plait</td>
+          <td></td>
+          <td>En attente</td>
+          <td><a href=""><i class="icon-pencil"></i></a></td>
+          <td><a href="#deleteRequestModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
+        </tr>
+        <tr>
+          <td>Congé Payé</td>
+          <td>23/12/2010</td>
+          <td>03/01/2011</td>
+          <td>Vacances de Noel</td>
+          <td></td>
+          <td>En attente</td>
+          <td><a href=""><i class="icon-pencil"></i></a></td>
+          <td><a href="#deleteRequestModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
+        </tr>
+        <tr>
+          <td>Congé sans solde</td>
+          <td>17/02/2011</td>
+          <td>17/02/2011</td>
+          <td>RAS</td>
+          <td>OK</td>
+          <td>Validé</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>RTT</td>
+          <td>03/01/2011</td>
+          <td>04/01/2011</td>
+          <td>RAS</td>
+          <td>Pas possible</td>
+          <td>Refusé</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-    <button class="btn btn-danger">Supprimer</button>
+
+  <!-- Delete Request Modal -->
+  <div id="deleteRequestModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deleteRequestModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="deleteRequestModalLabel">Supprimer la demande de congé</h3>
+    </div>
+    <div class="modal-body">
+      <p>Etes vous sur de vouloir supprimer la demande <br /> de RTT du 22/10/2010 au 24/10/2010 ?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <button class="btn btn-danger">Supprimer</button>
+    </div>
   </div>
-</div>
+
+  <div>YouGo-AngularJS: v<span app-version></span></div>
+
+</div> <!-- /container -->
