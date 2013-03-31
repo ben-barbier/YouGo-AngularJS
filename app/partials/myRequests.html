@@ -29,7 +29,7 @@
           <td>S'il vous plait</td>
           <td></td>
           <td>En attente</td>
-          <td><a href=""><i class="icon-pencil"></i></a></td>
+          <td><a href="#editRequestModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
           <td><a href="#deleteRequestModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
         </tr>
         <tr>
@@ -39,7 +39,7 @@
           <td>Vacances de Noel</td>
           <td></td>
           <td>En attente</td>
-          <td><a href=""><i class="icon-pencil"></i></a></td>
+          <td><a href="#editRequestModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
           <td><a href="#deleteRequestModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
         </tr>
         <tr>
@@ -78,6 +78,49 @@
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
       <button class="btn btn-danger">Supprimer</button>
+    </div>
+  </div>
+
+    <!-- Edit Request Modal -->
+  <div id="editRequestModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editRequestModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="editRequestModalLabel">Modifier la demande de congé</h3>
+    </div>
+    <div class="modal-body">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>
+            <select name="type">
+              <option value="1">Congé payé</option>
+              <option value="2">Congé par anticipation</option>
+              <option value="3">Congé exceptionnel</option>
+              <option value="4">RTT Collaborateur</option>
+              <option value="5">RTT Employeur</option>
+              <option value="6">Récupération</option>
+              <option value="7">Repos compensateur</option>
+              <option value="8">Congé sans solde</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Du</td>
+          <td><input type="text" name="from" value="23/12/2010"/></td>
+        </tr>
+        <tr>
+          <td>Au</td>
+          <td><input type="text" name="to" value="03/01/2011"/></td>
+        </tr>
+        <tr>
+          <td>Observation</td>
+          <td><textarea rows="8" cols="100" style="width:90%">Vacances de Noel</textarea></td>
+        </tr>
+    </table>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <button class="btn btn-primary">Modifier</button>
     </div>
   </div>
 
