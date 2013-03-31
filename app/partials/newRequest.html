@@ -3,38 +3,40 @@
   <div class="alert">
     Message d'information sur le résultat d'une action
   </div>
-  <div class="row">
-    <div class="span3">
-      <h4>Date de début : </h4>
-      <div ui-date></div>
-      <!-- ng-model="date" -->
+  <form method="POST" action="">
+    <div class="row">
+      <div class="span3">
+        <h4>Date de début : </h4>
+        <div ui-date></div>
+        <!-- ng-model="date" -->
+      </div>
+      <div class="span3">
+        <h4>Date de fin : </h4>
+        <div ui-date></div>
+        <!-- ng-model="date" -->
+      </div>
+      <div class="span6">
+        <h4>Observations : </h4>
+        <textarea rows="8" cols="100" style="width:100%">
+          Some text
+          A second line of text
+        </textarea>
+      </div>
     </div>
-    <div class="span3">
-      <h4>Date de fin : </h4>
-      <div ui-date></div>
-      <!-- ng-model="date" -->
+    <div style="margin-top:20px;">
+      Type de congé :           
+      <select name="type">
+        <option value="1">Congé payé</option>
+        <option value="2">Congé par anticipation</option>
+        <option value="3">Congé exceptionnel</option>
+        <option value="4">RTT Collaborateur</option>
+        <option value="5">RTT Employeur</option>
+        <option value="6">Récupération</option>
+        <option value="7">Repos compensateur</option>
+        <option value="8">Congé sans solde</option>
+      </select>
+      <input type="submit" name="sendRequest" value="Envoyer la demande" class="btn btn-primary pull-right"/>
     </div>
-    <div class="span6">
-      <h4>Observations : </h4>
-      <textarea rows="8" cols="100" style="width:100%">
-        Some text
-        A second line of text
-      </textarea>
-    </div>
-  </div>
-  <div style="margin-top:20px;">
-    Type de congé :           
-    <select name="type">
-      <option value="1">Congé payé</option>
-      <option value="2">Congé par anticipation</option>
-      <option value="3">Congé exceptionnel</option>
-      <option value="4">RTT Collaborateur</option>
-      <option value="5">RTT Employeur</option>
-      <option value="6">Récupération</option>
-      <option value="7">Repos compensateur</option>
-      <option value="8">Congé sans solde</option>
-    </select>
-    <input type="submit" name="sendRequest" value="Envoyer la demande" class="btn btn-primary pull-right"/>
-  </div>
+  </form>
 </div>
 

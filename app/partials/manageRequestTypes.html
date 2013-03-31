@@ -4,21 +4,22 @@
     Message d'information sur le résultat d'une action
   </div>
   <div>
-    <table>
-      <tr>
-      	<td>ID : </td>
-      	<td>1</td>
-      </tr>
-      <tr>
-      	<td>Description : </td>
-      	<td><input type="text" name="description" /></td>
-      </tr>
-      </tr>
-    </table>
-    <div>
-      <input type="submit" name="addUpdate" value="Ajouter/Modifier" class="btn btn-primary"/>
-      <input type="submit" name="addUpdate" value="Supprimer" class="btn btn-danger"/>
-      <a class="btn" href="#/manageRequestTypesList">Annuler</a>
-    </div>
+    <form method="POST" action="">
+      <table>
+        <tr>
+          <td>ID : </td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Description : </td>
+          <td><input type="text" name="description" /></td>
+        </tr>
+      </table>
+      <div>
+        <input type="submit" name="addUpdate" value="Ajouter/Modifier" class="btn btn-primary"/>
+        <input type="submit" name="addUpdate" value="Supprimer" class="btn btn-danger"/>
+        <a class="btn" href="#/manageRequestTypesList">Annuler</a>
+      </div>
+    </form>
   </div>
 </div>
