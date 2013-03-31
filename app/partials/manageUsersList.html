@@ -30,7 +30,7 @@
             <td>false</td>
             <td>Kristina CHUNG</td>
             <td>kristina.kristina@company.com</td>
-            <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
           <tr>
@@ -39,7 +39,7 @@
             <td>false</td>
             <td>Paige CHEN</td>
             <td>paige.paige@company.com</td>
-            <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
           <tr>
@@ -48,7 +48,7 @@
             <td>false</td>
             <td>Sherri MELTON</td>
             <td>sherri.sherri@company.com</td>
-            <td><a href="#/manageUsers"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
         </tbody>
@@ -68,6 +68,53 @@
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
       <button class="btn btn-danger">Supprimer</button>
+    </div>
+  </div>
+
+  <!-- Edit User Modal -->
+  <div id="editUserModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="editUserModalLabel">Modifier le compte utilisateur</h3>
+    </div>
+    <div class="modal-body">
+      <table>
+        <tr>
+          <td>ID : </td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Nom : </td>
+          <td><input type="text" name="name" value="Kristina CHUNG"/></td>
+        </tr>
+        <tr>
+          <td>Email : </td>
+          <td><input type="email" name="email" value="kristina.kristina@company.com"/></td>
+        </tr>
+        <tr>
+          <td>Actif ? : </td>
+          <td><input type="checkbox" name="isActive" checked="checked"/></td>
+        </tr>
+        <tr>
+          <td>Admin ? : </td>
+          <td><input type="checkbox" name="isAdmin"/></td>
+        </tr>
+        <tr>
+          <td>Type : </td>
+          <td>
+            <select name="type">
+              <option value="1">Consultant</option>
+              <option value="2">Ressources Humaines</option>
+              <option value="3">Direction</option>
+              <option value="4">Commercial</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <button class="btn btn-primary">Modifier</button>
     </div>
   </div>
 
