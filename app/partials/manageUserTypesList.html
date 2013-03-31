@@ -24,25 +24,25 @@
           <tr>
             <td>1</td>
             <td>Consultant</td>
-            <td><a href="#/manageUserTypes"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
           <tr>
             <td>2</td>
             <td>Ressources Humaines</td>
-            <td><a href="#/manageUserTypes"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
           <tr>
             <td>3</td>
             <td>Direction</td>
-            <td><a href="#/manageUserTypes"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
           <tr>
             <td>4</td>
             <td>Commercial</td>
-            <td><a href="#/manageUserTypes"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
         </tbody>
@@ -62,6 +62,30 @@
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
       <button class="btn btn-danger">Supprimer</button>
+    </div>
+  </div>
+
+  <!-- Edit User Type Modal -->
+  <div id="editUserTypeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editUserTypeModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="editUserTypeModalLabel">Modifier le type de compte utilisateur</h3>
+    </div>
+    <div class="modal-body">
+      <table>
+        <tr>
+          <td>ID : </td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Description : </td>
+          <td><input type="text" name="description" value="Consulant"/></td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <button class="btn btn-primary">Modifier</button>
     </div>
   </div>
 
