@@ -2,15 +2,6 @@
 
 /* Controllers */
 
-
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
-
-
-function MyCtrl2() {
+function YougoCtrl($scope) {
+	$scope.user = "BOB";
 }
-MyCtrl2.$inject = [];
-
-function SigninCtrl() {
-}
-SigninCtrl.$inject = [];
