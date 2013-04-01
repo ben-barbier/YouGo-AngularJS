@@ -25,7 +25,7 @@
             <td>{{userType.id}}</td>
             <td>{{userType.description}}</td>
             <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-            <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
+            <td><a href="#deleteUserTypeModal" data-toggle="modal" ng-click="initDeleteUserTypeModal(userType.id);"><i class="icon-trash"></i></a></td>
           </tr>
         </tbody>
       </table>
@@ -39,7 +39,7 @@
       <h3 id="deleteUserTypeModalLabel">Supprimer le type de compte utilisateur</h3>
     </div>
     <div class="modal-body">
-      <p>Etes vous sur de vouloir supprimer le type de compte utilisateur <br />"Consultant" ?</p>
+      <p>Etes vous sur de vouloir supprimer le type de compte utilisateur <br />{{selectedUserType.id}}: "{{selectedUserType.description}}" ?</p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
