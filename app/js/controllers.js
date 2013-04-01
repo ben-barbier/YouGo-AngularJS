@@ -37,4 +37,8 @@ function MainCtrl($scope) {
     $scope.selectedUserType = $.grep($scope.userTypes, function(e){ return e.id == $userTypeId; })[0];
   };
 
+  $scope.initDeleteUserModal = function($userId) {
+    $scope.selectedUser = $.grep($scope.users, function(e){ return e.id == $userId; })[0];
+  };
+
 }
