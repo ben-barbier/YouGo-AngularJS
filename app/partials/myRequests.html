@@ -97,14 +97,7 @@
           <td>Type</td>
           <td>
             <select name="type">
-              <option value="1">Congé payé</option>
-              <option value="2">Congé par anticipation</option>
-              <option value="3">Congé exceptionnel</option>
-              <option value="4">RTT Collaborateur</option>
-              <option value="5">RTT Employeur</option>
-              <option value="6">Récupération</option>
-              <option value="7">Repos compensateur</option>
-              <option value="8">Congé sans solde</option>
+              <option ng-repeat="requestType in requestTypes" value="{{requestType.id}}">{{requestType.description}}</option>
             </select>
           </td>
         </tr>
