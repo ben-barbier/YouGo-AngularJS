@@ -8,7 +8,7 @@
       Message d'information sur le résultat d'une action
     </div>
     <div>
-      <a class="btn btn-primary" href="#/manageUsers">Ajouter un utilisateur</a>
+      <a class="btn btn-primary" href="#addUserModal" data-toggle="modal">Ajouter un utilisateur</a>
       <br />
       <br />
       <table class="table table-hover table-condensed">
@@ -115,6 +115,53 @@
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
       <button class="btn btn-primary">Modifier</button>
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div id="addUserModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="addUserModalLabel">Ajouter un compte utilisateur</h3>
+    </div>
+    <div class="modal-body">
+      <table>
+        <tr>
+          <td>ID : </td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Nom : </td>
+          <td><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+          <td>Email : </td>
+          <td><input type="email" name="email"/></td>
+        </tr>
+        <tr>
+          <td>Actif ? : </td>
+          <td><input type="checkbox" name="isActive"/></td>
+        </tr>
+        <tr>
+          <td>Admin ? : </td>
+          <td><input type="checkbox" name="isAdmin"/></td>
+        </tr>
+        <tr>
+          <td>Type : </td>
+          <td>
+            <select name="type">
+              <option value="1">Consultant</option>
+              <option value="2">Ressources Humaines</option>
+              <option value="3">Direction</option>
+              <option value="4">Commercial</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <button class="btn btn-primary">Ajouter</button>
     </div>
   </div>
 
