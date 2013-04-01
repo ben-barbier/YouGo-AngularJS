@@ -24,7 +24,7 @@
           <tr ng-repeat="userType in userTypes">
             <td>{{userType.id}}</td>
             <td>{{userType.description}}</td>
-            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editUserTypeModal" data-toggle="modal" ng-click="selectUserType(userType.id);"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserTypeModal" data-toggle="modal" ng-click="selectUserType(userType.id);"><i class="icon-trash"></i></a></td>
           </tr>
         </tbody>
@@ -57,11 +57,11 @@
       <table>
         <tr>
           <td>ID : </td>
-          <td>1</td>
+          <td>{{selectedUserType.id}}</td>
         </tr>
         <tr>
           <td>Description : </td>
-          <td><input type="text" name="description" value="Consulant"/></td>
+          <td><input type="text" name="description" ng-model="selectedUserType.description"/></td>
         </tr>
       </table>
     </div>
