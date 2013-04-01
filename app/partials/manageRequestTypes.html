@@ -25,7 +25,7 @@
             <td>{{requestType.id}}</td>
             <td>{{requestType.description}}</td>
             <td><a href="#editRequestTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-            <td><a href="#deleteRequestTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
+            <td><a href="#deleteRequestTypeModal" data-toggle="modal" ng-click="initDeleteRequestTypeModal(requestType.id);"><i class="icon-trash"></i></a></td>
           </tr>
         </tbody>
       </table>
@@ -39,7 +39,7 @@
       <h3 id="deleteRequestTypeModalLabel">Supprimer le type de demande</h3>
     </div>
     <div class="modal-body">
-      <p>Etes vous sur de vouloir supprimer le type de demande<br />"Congé payé" ?</p>
+      <p>Etes vous sur de vouloir supprimer le type de demande<br />{{selectedRequestType.id}}: "{{selectedRequestType.description}}" ?</p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>

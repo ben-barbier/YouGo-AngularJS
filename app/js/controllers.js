@@ -29,4 +29,8 @@ function MainCtrl($scope) {
     { id: 3, actif: true, admin: false, nom: 'MELTON', prenom: 'Sherri',   email: 'sherri.sherri@company.com' }
   ];
 
+  $scope.initDeleteRequestTypeModal = function($requestTypeId) {
+    $scope.selectedRequestType = $.grep($scope.requestTypes, function(e){ return e.id == $requestTypeId; })[0];
+  };
+
 }
