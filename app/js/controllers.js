@@ -24,9 +24,9 @@ function MainCtrl($scope) {
   ];
 
   $scope.users = [
-    { id: 1, actif: true, admin: false, nom: 'CHUNG',  prenom: 'Kristina', email: 'kristina.kristina@company.com' },
-    { id: 2, actif: true, admin: false, nom: 'CHEN',   prenom: 'Paige',    email: 'paige.paige@company.com' },
-    { id: 3, actif: true, admin: false, nom: 'MELTON', prenom: 'Sherri',   email: 'sherri.sherri@company.com' }
+    { id: 1, actif: true, admin: false, nom: 'Kristina CHUNG', email: 'kristina.kristina@company.com' },
+    { id: 2, actif: true, admin: false, nom: 'Paige CHEN',     email: 'paige.paige@company.com' },
+    { id: 3, actif: true, admin: false, nom: 'Sherri MELTON',  email: 'sherri.sherri@company.com' }
   ];
 
   $scope.selectRequestType = function($requestTypeId) {

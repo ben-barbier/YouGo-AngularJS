@@ -45,7 +45,7 @@
       <h3 id="deleteUserModalLabel">Supprimer le compte utilisateur</h3>
     </div>
     <div class="modal-body">
-      <p>Etes vous sur de vouloir supprimer le compte utilisateur de<br />{{selectedUser.prenom}} {{selectedUser.nom}} ?</p>
+      <p>Etes vous sur de vouloir supprimer le compte utilisateur de<br />{{selectedUser.nom}} ?</p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
@@ -67,7 +67,7 @@
         </tr>
         <tr>
           <td>Nom : </td>
-          <td><input type="text" name="name" value="Kristina CHUNG"/></td>
+          <td><input type="text" name="name" value="{{selectedUser.nom}}"/></td>
         </tr>
         <tr>
           <td>Email : </td>
