@@ -24,7 +24,7 @@
           <tr ng-repeat="requestType in requestTypes">
             <td>{{requestType.id}}</td>
             <td>{{requestType.description}}</td>
-            <td><a href="#editRequestTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
+            <td><a href="#editRequestTypeModal" data-toggle="modal" ng-click="selectRequestType(requestType.id);"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteRequestTypeModal" data-toggle="modal" ng-click="selectRequestType(requestType.id);"><i class="icon-trash"></i></a></td>
           </tr>
         </tbody>
@@ -57,11 +57,11 @@
       <table>
         <tr>
           <td>ID : </td>
-          <td>1</td>
+          <td>{{selectedRequestType.id}}</td>
         </tr>
         <tr>
           <td>Description : </td>
-          <td><input type="text" name="description" value="Congé payé"/></td>
+          <td><input type="text" name="description" ng-model="selectedRequestType.description"/></td>
         </tr>
       </table>
     </div>
