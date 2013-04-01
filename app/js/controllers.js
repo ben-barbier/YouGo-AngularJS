@@ -29,15 +29,15 @@ function MainCtrl($scope) {
     { id: 3, actif: true, admin: false, nom: 'MELTON', prenom: 'Sherri',   email: 'sherri.sherri@company.com' }
   ];
 
-  $scope.initDeleteRequestTypeModal = function($requestTypeId) {
+  $scope.selectRequestType = function($requestTypeId) {
     $scope.selectedRequestType = $.grep($scope.requestTypes, function(e){ return e.id == $requestTypeId; })[0];
   };
 
-  $scope.initDeleteUserTypeModal = function($userTypeId) {
+  $scope.selectUserType = function($userTypeId) {
     $scope.selectedUserType = $.grep($scope.userTypes, function(e){ return e.id == $userTypeId; })[0];
   };
 
-  $scope.initDeleteUserModal = function($userId) {
+  $scope.selectUser = function($userId) {
     $scope.selectedUser = $.grep($scope.users, function(e){ return e.id == $userId; })[0];
   };
 
