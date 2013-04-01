@@ -103,10 +103,7 @@
           <td>Type : </td>
           <td>
             <select name="type">
-              <option value="1">Consultant</option>
-              <option value="2">Ressources Humaines</option>
-              <option value="3">Direction</option>
-              <option value="4">Commercial</option>
+              <option ng-repeat="userType in userTypes" value="{{userType.id}}">{{userType.description}}</option>
             </select>
           </td>
         </tr>
@@ -150,10 +147,7 @@
           <td>Type : </td>
           <td>
             <select name="type">
-              <option value="1">Consultant</option>
-              <option value="2">Ressources Humaines</option>
-              <option value="3">Direction</option>
-              <option value="4">Commercial</option>
+              <option ng-repeat="userType in userTypes" value="{{userType.id}}">{{userType.description}}</option>
             </select>
           </td>
         </tr>

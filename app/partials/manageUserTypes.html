@@ -21,27 +21,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Consultant</td>
-            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-            <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Ressources Humaines</td>
-            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-            <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Direction</td>
-            <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-            <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Commercial</td>
+          <tr ng-repeat="userType in userTypes">
+            <td>{{userType.id}}</td>
+            <td>{{userType.description}}</td>
             <td><a href="#editUserTypeModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserTypeModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>

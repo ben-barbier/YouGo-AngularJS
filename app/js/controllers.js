@@ -16,4 +16,11 @@ function MainCtrl($scope) {
     { id: 8, description: 'Congé sans solde' }
   ];
 
+  $scope.userTypes = [
+    { id: 1, description: 'Consultant' },
+    { id: 2, description: 'Ressources Humaines' },
+    { id: 3, description: 'Direction' },
+    { id: 4, description: 'Commercial' }
+  ];
+
 }
