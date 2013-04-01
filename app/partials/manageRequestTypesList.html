@@ -8,7 +8,7 @@
       Message d'information sur le résultat d'une action
     </div>
     <div>
-      <a class="btn btn-primary" href="#/manageRequestTypes">Ajouter un type de demande</a>
+      <a class="btn btn-primary" href="#addRequestTypeModal" data-toggle="modal">Ajouter un type de demande</a>
       <br />
       <br />
       <table class="table table-hover table-condensed">
@@ -110,6 +110,30 @@
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
       <button class="btn btn-primary">Modifier</button>
+    </div>
+  </div>
+
+  <!-- Add Request Type Modal -->
+  <div id="addRequestTypeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addRequestTypeModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="addRequestTypeModalLabel">Ajouter un type de demande</h3>
+    </div>
+    <div class="modal-body">
+      <table>
+        <tr>
+          <td>ID : </td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Description : </td>
+          <td><input type="text" name="description" /></td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <button class="btn btn-primary">Ajouter</button>
     </div>
   </div>
 
