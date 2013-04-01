@@ -24,11 +24,39 @@
             <a href="#"class="dropdown-toggle" data-toggle="dropdown">Kristina CHUNG <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">Déconnexion</a></li>
-              <li><a href="#">Changer le mot de passe</a></li>
+              <li><a href="#changePasswordModal" data-toggle="modal">Changer le mot de passe</a></li>
             </ul>
           </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
+  </div>
+</div>
+
+<!-- Delete User Modal -->
+<div id="changePasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="changePasswordModalLabel">Modifier votre mot de passe</h3>
+  </div>
+  <div class="modal-body">
+    <table>
+      <tr>
+        <td>Ancien mot de passe : </td>
+        <td><input type="text" name="oldPassword"/></td>
+      </tr>
+      <tr>
+        <td>Nouveau mot de passe : </td>
+        <td><input type="text" name="newPassword"/></td>
+      </tr>
+      <tr>
+        <td>Confirmation nouveau mot de passe : </td>
+        <td><input type="text" name="oldPasswordBis"/></td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+    <button class="btn btn-primary">Modifier</button>
   </div>
 </div>
