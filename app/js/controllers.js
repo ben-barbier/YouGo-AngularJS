@@ -24,9 +24,9 @@ function MainCtrl($scope) {
   ];
 
   $scope.users = [
-    { id: 1, actif: true, admin: false, nom: 'Kristina CHUNG', email: 'kristina.kristina@company.com' },
-    { id: 2, actif: true, admin: false, nom: 'Paige CHEN',     email: 'paige.paige@company.com' },
-    { id: 3, actif: true, admin: false, nom: 'Sherri MELTON',  email: 'sherri.sherri@company.com' }
+    { id: 1, actif: true,  admin: false, nom: 'Kristina CHUNG', email: 'kristina.kristina@company.com', type: 1 },
+    { id: 2, actif: true,  admin: true,  nom: 'Paige CHEN',     email: 'paige.paige@company.com',       type: 3 },
+    { id: 3, actif: false, admin: false, nom: 'Sherri MELTON',  email: 'sherri.sherri@company.com',     type: 4 }
   ];
 
   $scope.selectRequestType = function($requestTypeId) {
@@ -40,5 +40,9 @@ function MainCtrl($scope) {
   $scope.selectUser = function($userId) {
     $scope.selectedUser = $.grep($scope.users, function(e){ return e.id == $userId; })[0];
   };
+
+  $scope.getUserTypeById = function($userTypeId) {
+    return $.grep($scope.userTypes, function(e){ return e.id == $userTypeId; })[0];
+  }
 
 }
