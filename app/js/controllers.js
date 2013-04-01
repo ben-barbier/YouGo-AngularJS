@@ -23,4 +23,10 @@ function MainCtrl($scope) {
     { id: 4, description: 'Commercial' }
   ];
 
+  $scope.users = [
+    { id: 1, actif: true, admin: false, nom: 'CHUNG',  prenom: 'Kristina', email: 'kristina.kristina@company.com' },
+    { id: 2, actif: true, admin: false, nom: 'CHEN',   prenom: 'Paige',    email: 'paige.paige@company.com' },
+    { id: 3, actif: true, admin: false, nom: 'MELTON', prenom: 'Sherri',   email: 'sherri.sherri@company.com' }
+  ];
+
 }

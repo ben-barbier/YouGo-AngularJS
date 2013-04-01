@@ -24,30 +24,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>true</td>
-            <td>false</td>
-            <td>Kristina CHUNG</td>
-            <td>kristina.kristina@company.com</td>
-            <td><a href="#editUserModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-            <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>true</td>
-            <td>false</td>
-            <td>Paige CHEN</td>
-            <td>paige.paige@company.com</td>
-            <td><a href="#editUserModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-            <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>true</td>
-            <td>false</td>
-            <td>Sherri MELTON</td>
-            <td>sherri.sherri@company.com</td>
+          <tr ng-repeat="user in users">
+            <td>{{user.id}}</td>
+            <td>{{user.actif}}</td>
+            <td>{{user.admin}}</td>
+            <td>{{user.prenom}} {{user.nom}}</td>
+            <td>{{user.email}}</td>
             <td><a href="#editUserModal" data-toggle="modal"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserModal" data-toggle="modal"><i class="icon-trash"></i></a></td>
           </tr>
