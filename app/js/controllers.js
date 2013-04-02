@@ -30,9 +30,9 @@ function MainCtrl($scope) {
   ];
 
   $scope.requestStatus = [
-    { id: 1, description: 'En attente' },
-    { id: 2, description: 'Validé' },
-    { id: 3, description: 'Refusé'}
+    { id: 1, description: 'En attente', editable: true },
+    { id: 2, description: 'Validé',     editable: false },
+    { id: 3, description: 'Refusé',     editable: false }
   ];
 
   $scope.requests = [

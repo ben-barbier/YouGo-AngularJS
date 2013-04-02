@@ -33,8 +33,8 @@
           <td>{{request.observation}}</td>
           <td>{{request.reponse}}</td>
           <td>{{getRequestStatusById(request.statut).description}}</td>
-          <td><a href="#editRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-pencil"></i></a></td>
-          <td><a href="#deleteRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-trash"></i></a></td>
+          <td><a ng-show="getRequestStatusById(request.statut).editable" href="#editRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-pencil"></i></a></td>
+          <td><a ng-show="getRequestStatusById(request.statut).editable" href="#deleteRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-trash"></i></a></td>
         </tr>
       </tbody>
     </table>
