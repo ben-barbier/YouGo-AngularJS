@@ -2,8 +2,9 @@
 
 /* Controllers */
 
-function MainCtrl($scope) {
-  $scope.user = "BOB";
+function MainCtrl($scope, $log) {
+
+  $log.info("INIT CRTL");
 
   $scope.requestTypes = [
     { id: 1, description: 'Congé payé' },
@@ -42,32 +43,48 @@ function MainCtrl($scope) {
     { id: 4, type: 4, du: '03/01/2011', au: '04/01/2011', observation: '',                 reponse: 'Pas possible', statut: 3}
   ];
 
-  $scope.selectRequest = function($requestId) {
-    $scope.selectedRequest = $.grep($scope.requests, function(e){ return e.id == $requestId; })[0];
+  $scope.selectRequest = function(requestId) {
+    $scope.selectedRequest = $.grep($scope.requests, function(e){ return e.id == requestId; })[0];
   };
 
-  $scope.selectRequestType = function($requestTypeId) {
-    $scope.selectedRequestType = $.grep($scope.requestTypes, function(e){ return e.id == $requestTypeId; })[0];
+  $scope.selectRequestType = function(requestTypeId) {
+    $scope.selectedRequestType = $.grep($scope.requestTypes, function(e){ return e.id == requestTypeId; })[0];
   };
 
-  $scope.selectUserType = function($userTypeId) {
-    $scope.selectedUserType = $.grep($scope.userTypes, function(e){ return e.id == $userTypeId; })[0];
+  $scope.selectUserType = function(userTypeId) {
+    $scope.selectedUserType = $.grep($scope.userTypes, function(e){ return e.id == userTypeId; })[0];
   };
 
-  $scope.selectUser = function($userId) {
-    $scope.selectedUser = $.grep($scope.users, function(e){ return e.id == $userId; })[0];
+  $scope.selectUser = function(userId) {
+    $scope.selectedUser = $.grep($scope.users, function(e){ return e.id == userId; })[0];
   };
 
-  $scope.getUserTypeById = function($userTypeId) {
-    return $.grep($scope.userTypes, function(e){ return e.id == $userTypeId; })[0];
+  $scope.getUserTypeById = function(userTypeId) {
+    return $.grep($scope.userTypes, function(e){ return e.id == userTypeId; })[0];
   }
 
-  $scope.getRequestTypeById = function($requestTypeId) {
-    return $.grep($scope.requestTypes, function(e){ return e.id == $requestTypeId; })[0];
+  $scope.getRequestTypeById = function(requestTypeId) {
+    return $.grep($scope.requestTypes, function(e){ return e.id == requestTypeId; })[0];
   }
 
-  $scope.getRequestStatusById = function($requestStatusId) {
-    return $.grep($scope.requestStatus, function(e){ return e.id == $requestStatusId; })[0];
+  $scope.getRequestStatusById = function(requestStatusId) {
+    return $.grep($scope.requestStatus, function(e){ return e.id == requestStatusId; })[0];
+  }
+
+  $scope.addUserType = function(description) {
+    $scope.userTypes.push({ id: getNextId($scope.userTypes), description: description });
+    $scope.newUserTypeDescription = null;
+  }
+
+  function getNextId(list) {
+    var newId = 0;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].id > newId) {
+        newId = list[i].id;
+      }
+    };
+    newId++;
+    return newId;
   }
 
 }
