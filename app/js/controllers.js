@@ -73,12 +73,15 @@ function MainCtrl($scope, $log) {
 
   $scope.addUserType = function(description) {
     $scope.userTypes.push({ id: getNextId($scope.userTypes), description: description });
-    $scope.newUserTypeDescription = null;
   }
 
   $scope.removeUserType = function(userTypeId) {
     var userTypeToRemove = $scope.getUserTypeById(userTypeId);
     $scope.userTypes.splice($.inArray(userTypeToRemove, $scope.userTypes),1);
+  }
+
+  $scope.addRequestType = function(description) {
+    $scope.requestTypes.push({ id: getNextId($scope.requestTypes), description: description });
   }
 
   function getNextId(list) {

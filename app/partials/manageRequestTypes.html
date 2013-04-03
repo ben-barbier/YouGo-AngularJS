@@ -78,20 +78,11 @@
       <h3 id="addRequestTypeModalLabel">Ajouter un type de demande</h3>
     </div>
     <div class="modal-body">
-      <table>
-        <tr>
-          <td>ID : </td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>Description : </td>
-          <td><input type="text" name="description" /></td>
-        </tr>
-      </table>
+      Description : <input type="text" name="description" ng-model="newDescription" />
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-      <button class="btn btn-primary">Ajouter</button>
+      <button class="btn btn-primary" data-dismiss="modal" ng-click="addRequestType(newDescription);">Ajouter</button>
     </div>
   </div>
 
