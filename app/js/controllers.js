@@ -76,6 +76,11 @@ function MainCtrl($scope, $log) {
     $scope.newUserTypeDescription = null;
   }
 
+  $scope.removeUserType = function(userTypeId) {
+    var userTypeToRemove = $scope.getUserTypeById(userTypeId);
+    $scope.userTypes.splice($.inArray(userTypeToRemove, $scope.userTypes),1);
+  }
+
   function getNextId(list) {
     var newId = 0;
     for (var i = 0; i < list.length; i++) {
