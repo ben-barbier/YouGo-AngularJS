@@ -84,6 +84,11 @@ function MainCtrl($scope, $log) {
     $scope.requestTypes.push({ id: getNextId($scope.requestTypes), description: description });
   }
 
+  $scope.removeRequestType = function(requestTypeId) {
+    var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
+    $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
+  }
+
   function getNextId(list) {
     var newId = 0;
     for (var i = 0; i < list.length; i++) {
