@@ -59,6 +59,10 @@ function MainCtrl($scope, $log) {
     $scope.selectedUser = $.grep($scope.users, function(e){ return e.id == userId; })[0];
   };
 
+  $scope.getUserById = function(userId) {
+    return $.grep($scope.users, function(e){ return e.id == userId; })[0];
+  }
+
   $scope.getUserTypeById = function(userTypeId) {
     return $.grep($scope.userTypes, function(e){ return e.id == userTypeId; })[0];
   }
@@ -87,6 +91,11 @@ function MainCtrl($scope, $log) {
   $scope.removeRequestType = function(requestTypeId) {
     var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
     $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
+  }
+
+  $scope.removeUser = function(userId) {
+    var userToRemove = $scope.getUserById(userId);
+    $scope.users.splice($.inArray(userToRemove, $scope.users),1);
   }
 
   function getNextId(list) {
