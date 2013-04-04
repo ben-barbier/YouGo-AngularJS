@@ -105,38 +105,32 @@
     <div class="modal-body">
       <table>
         <tr>
-          <td>ID : </td>
-          <td>1</td>
-        </tr>
-        <tr>
           <td>Nom : </td>
-          <td><input type="text" name="name" /></td>
+          <td><input type="text" name="name" ng-model="newUser.nom"/></td>
         </tr>
         <tr>
           <td>Email : </td>
-          <td><input type="email" name="email"/></td>
+          <td><input type="email" name="email" ng-model="newUser.email"/></td>
         </tr>
         <tr>
           <td>Actif ? : </td>
-          <td><input type="checkbox" name="isActive"/></td>
+          <td><input type="checkbox" name="isActive" ng-model="newUser.actif"/></td>
         </tr>
         <tr>
           <td>Admin ? : </td>
-          <td><input type="checkbox" name="isAdmin"/></td>
+          <td><input type="checkbox" name="isAdmin" ng-model="newUser.admin"/></td>
         </tr>
         <tr>
           <td>Type : </td>
           <td>
-            <select name="type">
-              <option ng-repeat="userType in userTypes" value="{{userType.id}}">{{userType.description}}</option>
-            </select>
+            <select name="type" ng-model="newUser.type" ng-options="ut.id as ut.description for ut in userTypes"></select>
           </td>
         </tr>
       </table>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-      <button class="btn btn-primary">Ajouter</button>
+      <button class="btn btn-primary" data-dismiss="modal" ng-click="addUser(newUser);">Ajouter</button>
     </div>
   </div>
 

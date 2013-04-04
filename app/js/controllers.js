@@ -6,6 +6,8 @@ function MainCtrl($scope, $log) {
 
   $log.info("INIT CRTL");
 
+  $scope.newUser = null;
+
   $scope.requestTypes = [
     { id: 1, description: 'Congé payé' },
     { id: 2, description: 'Congé par anticipation' },
@@ -91,6 +93,13 @@ function MainCtrl($scope, $log) {
   $scope.removeRequestType = function(requestTypeId) {
     var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
     $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
+  }
+
+  $scope.addUser = function(newUser) {
+    $log.info("Add User : " + JSON.stringify(newUser));
+    newUser['actif'] = (newUser.actif==true)?true:false;
+    newUser['admin'] = (newUser.admin==true)?true:false;
+    $scope.users.push($.extend(true, {}, newUser, {id: getNextId($scope.users)}));
   }
 
   $scope.removeUser = function(userId) {
