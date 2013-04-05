@@ -7,36 +7,27 @@
     <div class="alert">
       Message d'information sur le résultat d'une action
     </div>
-    <form method="POST" action="">
-      <div class="row">
-        <div class="span3">
-          <h4>Date de début : </h4>
-          <div ui-date></div>
-          <!-- ng-model="date" -->
-        </div>
-        <div class="span3">
-          <h4>Date de fin : </h4>
-          <div ui-date></div>
-          <!-- ng-model="date" -->
-        </div>
-        <div class="span6">
-          <h4>Observations : </h4>
-          <textarea rows="8" cols="100" style="width:100%">
-            Some text
-            A second line of text
-          </textarea>
-        </div>
+    <div class="row">
+      <div class="span3">
+        <h4>Date de début : </h4>
+        <div ui-date ng-model="newRequest.du"></div>
       </div>
-      <div style="margin-top:20px;">
-        Type de congé :           
-        <select name="type">
-          <option ng-repeat="requestType in requestTypes" value="{{requestType.id}}">{{requestType.description}}</option>
-        </select>
-        <input type="submit" name="sendRequest" value="Envoyer la demande" class="btn btn-primary pull-right"/>
+      <div class="span3">
+        <h4>Date de fin : </h4>
+        <div ui-date ng-model="newRequest.au"></div>
       </div>
-    </form>
+      <div class="span6">
+        <h4>Observations : </h4>
+        <textarea rows="8" cols="100" style="width:100%" ng-model="newRequest.observation"></textarea>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      Type de congé :
+      <select name="type" ng-model="newRequest.type" ng-options="rt.id as rt.description for rt in requestTypes"></select>
+      <input type="submit" ng-click="addRequest(newRequest);" value="Envoyer la demande" class="btn btn-primary pull-right"/>
+    </div>
   </div>
-  
+
   <ng-include src="'partials/footer.html'"></ng-include>
 
 </div> <!-- /container -->

@@ -7,6 +7,7 @@ function MainCtrl($scope, $log) {
   $log.info("INIT CRTL");
 
   $scope.newUser = null;
+  $scope.newRequest = null;
 
   $scope.requestTypes = [
     { id: 1, description: 'Congé payé' },
@@ -39,10 +40,10 @@ function MainCtrl($scope, $log) {
   ];
 
   $scope.requests = [
-    { id: 1, type: 5, du: '22/10/2010', au: '24/10/2010', observation: 'S‘il vous plait',  reponse: '',             statut: 1},
-    { id: 2, type: 1, du: '23/12/2010', au: '03/01/2011', observation: 'Vacances de Noel', reponse: '',             statut: 1},
-    { id: 3, type: 8, du: '17/02/2011', au: '17/02/2011', observation: '',                 reponse: 'OK',           statut: 2},
-    { id: 4, type: 4, du: '03/01/2011', au: '04/01/2011', observation: '',                 reponse: 'Pas possible', statut: 3}
+    { id: 1, type: 5, du: new Date(2010, 10, 22), au: new Date(2010, 10, 24), observation: 'S‘il vous plait',  reponse: '',             statut: 1},
+    { id: 2, type: 1, du: new Date(2010, 11, 23), au: new Date(2011,  3,  1), observation: 'Vacances de Noel', reponse: '',             statut: 1},
+    { id: 3, type: 8, du: new Date(2011, 2,  17), au: new Date(2011,  2, 17), observation: '',                 reponse: 'OK',           statut: 2},
+    { id: 4, type: 4, du: new Date(2011, 1,   3), au: new Date(2011,  1,  4), observation: '',                 reponse: 'Pas possible', statut: 3}
   ];
 
   $scope.selectRequest = function(requestId) {
@@ -106,6 +107,13 @@ function MainCtrl($scope, $log) {
   $scope.removeUser = function(userId) {
     var userToRemove = $scope.getUserById(userId);
     $scope.users.splice($.inArray(userToRemove, $scope.users),1);
+  }
+
+  $scope.addRequest = function(newRequest) {
+    $log.info("Add Request : " + JSON.stringify(newRequest));
+    newRequest['id'] = getNextId($scope.requests);
+    newRequest['statut'] = 1;
+    $scope.requests.push(angular.copy(newRequest));
   }
 
   function getNextId(list) {

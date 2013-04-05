@@ -28,8 +28,8 @@
       <tbody>
         <tr ng-repeat="request in requests">
           <td>{{getRequestTypeById(request.type).description}}</td>
-          <td>{{request.du}}</td>
-          <td>{{request.au}}</td>
+          <td>{{request.du | date: 'dd/MM/yyyy'}}</td>
+          <td>{{request.au | date: 'dd/MM/yyyy'}}</td>
           <td>{{request.observation}}</td>
           <td>{{request.reponse}}</td>
           <td>{{getRequestStatusById(request.statut).description}}</td>
