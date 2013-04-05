@@ -97,9 +97,10 @@ function MainCtrl($scope, $log) {
 
   $scope.addUser = function(newUser) {
     $log.info("Add User : " + JSON.stringify(newUser));
+    newUser['id'] = getNextId($scope.users);
     newUser['actif'] = (newUser.actif==true)?true:false;
     newUser['admin'] = (newUser.admin==true)?true:false;
-    $scope.users.push($.extend(true, {}, newUser, {id: getNextId($scope.users)}));
+    $scope.users.push(angular.copy(newUser));
   }
 
   $scope.removeUser = function(userId) {
