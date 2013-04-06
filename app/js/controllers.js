@@ -6,7 +6,7 @@ function MainCtrl($scope, $log, $location) {
 
   $log.info("INIT CRTL");
 
-  $scope.newUser = null;
+  $scope.newUser = {type: 1};
   $scope.newRequest = {type: 1};
 
   $scope.requestTypes = [
