@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function MainCtrl($scope, $log) {
+function MainCtrl($scope, $log, $location) {
 
   $log.info("INIT CRTL");
 
@@ -114,6 +114,7 @@ function MainCtrl($scope, $log) {
     newRequest['id'] = getNextId($scope.requests);
     newRequest['statut'] = 1;
     $scope.requests.push(angular.copy(newRequest));
+    $location.path('/myRequests');
   }
 
   function getNextId(list) {
