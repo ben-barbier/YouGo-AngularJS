@@ -4,10 +4,11 @@
 
 function MainCtrl($scope, $log, $location) {
 
-  $log.info("INIT CRTL");
+  $log.info("Init MainCtrl");
 
   $scope.newUser = {type: 1};
   $scope.newRequest = {type: 1};
+  $scope.user = null;
 
   $scope.requestTypes = [
     { id: 1, description: 'Congé payé' },
@@ -115,6 +116,23 @@ function MainCtrl($scope, $log, $location) {
     newRequest['statut'] = 1;
     $scope.requests.push(angular.copy(newRequest));
     $location.path('/myRequests');
+  }
+
+  $scope.signin = function(login, password) {
+    if (login=='kristina.kristina@company.com' && password=='pass') {
+      $scope.user = $scope.getUserById(1);
+      $location.path('/myRequests');
+    } else if (login=='paige.paige@company.com' && password=='pass') {
+      $scope.user = $scope.getUserById(2);
+      $location.path('/myRequests');
+    } else {
+      $log.info("BAD LOGIN !");
+    }
+  }
+
+  $scope.signout = function(login, password) {
+    $scope.user = null;
+    $location.path('/signin');
   }
 
   function getNextId(list) {

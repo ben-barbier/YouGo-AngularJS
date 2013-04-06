@@ -4,9 +4,20 @@
 
   <form class="form-signin">
     <h2 class="form-signin-heading">YouGo</h2>
-    <input type="text" class="input-block-level" placeholder="Email">
-    <input type="password" class="input-block-level" placeholder="Mot de passe">
-    <a href="#/myRequests" class="btn btn-large btn-primary">OK</a>
+    <input type="text" ng-model="login" class="input-block-level" placeholder="Email">
+    <input type="password" ng-model="password" class="input-block-level" placeholder="Mot de passe">
+    <input type="submit" ng-click="signin(login, password);" class="btn btn-large btn-primary" value="OK"/>
+    <br /><br />
+    <div class="alert alert-info">
+      <b>Collaborateur :</b><br />
+      Login : kristina.kristina@company.com<br />
+      Pass : pass
+    </div>
+    <div class="alert alert-info">
+      <b>Administrateur :</b><br />
+      Login : paige.paige@company.com<br />
+      Pass : pass
+    </div>
   </form>
 
 </div> <!-- /container -->
