@@ -7,7 +7,7 @@ function MainCtrl($scope, $log, $location) {
   $log.info("INIT CRTL");
 
   $scope.newUser = null;
-  $scope.newRequest = null;
+  $scope.newRequest = {type: 1};
 
   $scope.requestTypes = [
     { id: 1, description: 'Congé payé' },
