@@ -128,6 +128,7 @@ function MainCtrl($scope, $log, $location) {
   $scope.addRequest = function(newRequest) {
     newRequest['id'] = getNextId($scope.requests);
     newRequest['statut'] = 1;
+    newRequest['user'] = $scope.user.id;
     $scope.requests.push(angular.copy(newRequest));
     $location.path('/myRequests');
     $scope.message = "Demande de congé ajoutée." ;
