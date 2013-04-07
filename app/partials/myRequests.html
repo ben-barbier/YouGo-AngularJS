@@ -49,11 +49,11 @@
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-      <button class="btn btn-danger">Supprimer</button>
+      <button class="btn btn-danger" data-dismiss="modal" ng-click="removeRequest(selectedRequest.id)">Supprimer</button>
     </div>
   </div>
 
-    <!-- Edit Request Modal -->
+  <!-- Edit Request Modal -->
   <div id="editRequestModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editRequestModalLabel" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

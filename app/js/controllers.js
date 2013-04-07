@@ -73,6 +73,10 @@ function MainCtrl($scope, $log, $location) {
     return $.grep($scope.requests, function(e){ return e.user == userId; });
   }
 
+  $scope.getRequestById = function(requestId) {
+    return $.grep($scope.requests, function(e){ return e.id == requestId; })[0];
+  }
+
   $scope.getUserTypeById = function(userTypeId) {
     return $.grep($scope.userTypes, function(e){ return e.id == userTypeId; })[0];
   }
@@ -129,6 +133,16 @@ function MainCtrl($scope, $log, $location) {
     $scope.message = "Demande de congé ajoutée." ;
   }
 
+  $scope.removeRequest = function(requestId) {
+    $log.info("requestId "+requestId);
+    var requestToRemove = $scope.getRequestById(requestId);
+    $log.info("requestToRemove "+JSON.stringify(requestToRemove));
+    $log.info("&"+$scope.getRequestTypeById(requestToRemove.type));
+    $log.info("&"+requestToRemove.du);
+    $scope.message = "Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + formatDate(requestToRemove.du) + " au " + formatDate(requestToRemove.au) + " supprimée." ;
+    $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);    
+  }
+
   $scope.signin = function(login, password) {
     if (login=='kristina.kristina@company.com' && password=='pass') {
       $scope.user = $scope.getUserById(1);
@@ -167,6 +181,13 @@ function MainCtrl($scope, $log, $location) {
     };
     newId++;
     return newId;
+  }
+
+  function formatDate(date) {
+    var d = date.getDate();
+    var m = date.getMonth() + 1;
+    var y = date.getFullYear();
+    return '' + (d <= 9 ? '0' + d : d) + '/' + (m<=9 ? '0' + m : m) + '/' + y;
   }
 
 }
