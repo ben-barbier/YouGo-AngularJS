@@ -143,6 +143,17 @@ function MainCtrl($scope, $log, $location) {
     $location.path('/signin');
   }
 
+  $scope.checkLogin = function() {
+    if ($scope.user == null) {
+      $log.info("checkLogin : KO");
+      $location.path('/signin');
+    } else {
+      $log.info("checkLogin : OK");
+      return true;
+    }
+  }
+  
+
   function getNextId(list) {
     var newId = 0;
     for (var i = 0; i < list.length; i++) {
