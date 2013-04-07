@@ -165,11 +165,14 @@ function MainCtrl($scope, $log, $location) {
 
   $scope.checkLogin = function() {
     if ($scope.user == null) {
-      $log.info("checkLogin : KO");
+      $log.info("checkLogin : KO (not logged)");
+      $location.path('/signin');
+    } else if ($scope.user.actif != true) {
+      $log.info("checkLogin : KO (user not active)");
       $location.path('/signin');
     } else {
       $log.info("checkLogin : OK");
-      return true;
+      return true;  
     }
   }
 
