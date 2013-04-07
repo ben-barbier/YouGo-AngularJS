@@ -42,10 +42,11 @@ function MainCtrl($scope, $log, $location) {
   ];
 
   $scope.requests = [
-    { id: 1, type: 5, du: new Date(2010, 10, 22), au: new Date(2010, 10, 24), observation: 'S‘il vous plait',  reponse: '',             statut: 1},
-    { id: 2, type: 1, du: new Date(2010, 11, 23), au: new Date(2011,  3,  1), observation: 'Vacances de Noel', reponse: '',             statut: 1},
-    { id: 3, type: 8, du: new Date(2011, 2,  17), au: new Date(2011,  2, 17), observation: '',                 reponse: 'OK',           statut: 2},
-    { id: 4, type: 4, du: new Date(2011, 1,   3), au: new Date(2011,  1,  4), observation: '',                 reponse: 'Pas possible', statut: 3}
+    { id: 1, type: 5, du: new Date(2010, 10, 22), au: new Date(2010, 10, 24), observation: 'S‘il vous plait',  reponse: '',             statut: 1, user: 1},
+    { id: 2, type: 1, du: new Date(2010, 11, 23), au: new Date(2011,  3,  1), observation: 'Vacances de Noel', reponse: '',             statut: 1, user: 1},
+    { id: 3, type: 8, du: new Date(2011, 2,  17), au: new Date(2011,  2, 17), observation: '',                 reponse: 'OK',           statut: 2, user: 1},
+    { id: 4, type: 4, du: new Date(2011, 1,   3), au: new Date(2011,  1,  4), observation: '',                 reponse: 'Pas possible', statut: 3, user: 1},
+    { id: 5, type: 5, du: new Date(2010, 10, 22), au: new Date(2010, 10, 24), observation: 'S‘il vous plait',  reponse: '',             statut: 1, user: 2}
   ];
 
   $scope.selectRequest = function(requestId) {
@@ -66,6 +67,10 @@ function MainCtrl($scope, $log, $location) {
 
   $scope.getUserById = function(userId) {
     return $.grep($scope.users, function(e){ return e.id == userId; })[0];
+  }
+
+  $scope.getUserRequests = function(userId) {
+    return $.grep($scope.requests, function(e){ return e.user == userId; });
   }
 
   $scope.getUserTypeById = function(userTypeId) {
@@ -152,7 +157,6 @@ function MainCtrl($scope, $log, $location) {
       return true;
     }
   }
-  
 
   function getNextId(list) {
     var newId = 0;
