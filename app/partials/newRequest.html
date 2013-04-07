@@ -4,9 +4,7 @@
 
   <h1>Nouvelle demande</h1>
   <div>
-    <div class="alert">
-      Message d'information sur le résultat d'une action
-    </div>
+    <div class="alert" ng-hide="message==''">{{message}}</div>
     <div class="row">
       <div class="span3">
         <h4>Date de début : </h4>

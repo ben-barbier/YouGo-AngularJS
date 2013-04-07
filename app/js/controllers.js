@@ -9,6 +9,7 @@ function MainCtrl($scope, $log, $location) {
   $scope.newUser = {type: 1};
   $scope.newRequest = {type: 1};
   $scope.user = null;
+  $scope.message = "";
 
   $scope.requestTypes = [
     { id: 1, description: 'Congé payé' },
@@ -81,52 +82,59 @@ function MainCtrl($scope, $log, $location) {
 
   $scope.addUserType = function(description) {
     $scope.userTypes.push({ id: getNextId($scope.userTypes), description: description });
+    $scope.message = "Type d'utilisateurs '" + description + "' ajouté." ;
   }
 
   $scope.removeUserType = function(userTypeId) {
     var userTypeToRemove = $scope.getUserTypeById(userTypeId);
     $scope.userTypes.splice($.inArray(userTypeToRemove, $scope.userTypes),1);
+    $scope.message = "Type d'utilisateurs '" + userTypeToRemove.description + "' supprimé." ;
   }
 
   $scope.addRequestType = function(description) {
     $scope.requestTypes.push({ id: getNextId($scope.requestTypes), description: description });
+    $scope.message = "Type de congés '" + description + "' ajouté." ;
   }
 
   $scope.removeRequestType = function(requestTypeId) {
     var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
     $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
+    $scope.message = "Type de congés '" + requestTypeToRemove.description + "' supprimé." ;
   }
 
   $scope.addUser = function(newUser) {
-    $log.info("Add User : " + JSON.stringify(newUser));
     newUser['id'] = getNextId($scope.users);
     newUser['actif'] = (newUser.actif==true)?true:false;
     newUser['admin'] = (newUser.admin==true)?true:false;
     $scope.users.push(angular.copy(newUser));
+    $scope.message = "Utilisateur " + newUser.nom + " ajouté." ;
   }
 
   $scope.removeUser = function(userId) {
     var userToRemove = $scope.getUserById(userId);
     $scope.users.splice($.inArray(userToRemove, $scope.users),1);
+    $scope.message = "Utilisateur " + userToRemove.nom + " supprimé." ;
   }
 
   $scope.addRequest = function(newRequest) {
-    $log.info("Add Request : " + JSON.stringify(newRequest));
     newRequest['id'] = getNextId($scope.requests);
     newRequest['statut'] = 1;
     $scope.requests.push(angular.copy(newRequest));
     $location.path('/myRequests');
+    $scope.message = "Demande de congé ajoutée." ;
   }
 
   $scope.signin = function(login, password) {
     if (login=='kristina.kristina@company.com' && password=='pass') {
       $scope.user = $scope.getUserById(1);
       $location.path('/myRequests');
+      $scope.message = "";
     } else if (login=='paige.paige@company.com' && password=='pass') {
       $scope.user = $scope.getUserById(2);
       $location.path('/myRequests');
+      $scope.message = "";
     } else {
-      $log.info("BAD LOGIN !");
+      $scope.message = "Login ou mot de passe incorrect." ;
     }
   }
 

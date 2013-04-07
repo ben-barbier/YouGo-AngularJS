@@ -8,6 +8,7 @@
     <input type="password" ng-model="password" class="input-block-level" placeholder="Mot de passe">
     <input type="submit" ng-click="signin(login, password);" class="btn btn-large btn-primary" value="OK"/>
     <br /><br />
+    <div class="alert alert-error" ng-hide="message==''">{{message}}</div>
     <div class="alert alert-info">
       <b>Collaborateur :</b><br />
       Login : kristina.kristina@company.com<br />

@@ -4,9 +4,7 @@
 
   <h1>Types de demande</h1>
   <div>
-    <div class="alert">
-      Message d'information sur le résultat d'une action
-    </div>
+    <div class="alert" ng-hide="message==''">{{message}}</div>
     <div>
       <a class="btn btn-primary" href="#addRequestTypeModal" data-toggle="modal">Ajouter un type de demande</a>
       <br />
