@@ -45,7 +45,7 @@
       <h3 id="deleteRequestModalLabel">Supprimer la demande de congé</h3>
     </div>
     <div class="modal-body">
-      <p>Etes vous sur de vouloir supprimer la demande <br /> de {{getRequestTypeById(selectedRequest.type).description}} du {{selectedRequest.du}} au {{selectedRequest.au}} ?</p>
+      <p>Etes vous sur de vouloir supprimer la demande <br /> de {{getRequestTypeById(selectedRequest.type).description}} du {{selectedRequest.du | date: 'dd/MM/yyyy'}} au {{selectedRequest.au | date: 'dd/MM/yyyy'}} ?</p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
