@@ -4,7 +4,7 @@
 
 function UserCtrl($scope, $log, $location) {
   
-  $log.info("Init AddUserCtrl");
+  $log.info("Init UserCtrl");
 
   $scope.newUser = {type: 1};
 
@@ -31,7 +31,7 @@ function UserCtrl($scope, $log, $location) {
 
 function UserTypeCtrl($scope, $log, $location) {
   
-  $log.info("Init AddUserTypeCtrl");
+  $log.info("Init UserTypeCtrl");
 
   $scope.addUserType = function(description) {
     $scope.userTypes.push({ id: $scope.getNextId($scope.userTypes), description: description });
@@ -51,6 +51,28 @@ function UserTypeCtrl($scope, $log, $location) {
 
 }
 
+function RequestTypeCtrl($scope, $log, $location) {
+  
+  $log.info("Init RequestTypeCtrl");
+
+  $scope.addRequestType = function(description) {
+    $scope.requestTypes.push({ id: $scope.getNextId($scope.requestTypes), description: description });
+    $scope.message = "Type de congés '" + description + "' ajouté." ;
+    $scope.newDescription = "";
+  }
+
+  $scope.selectRequestType = function(requestTypeId) {
+    $scope.selectedRequestType = $scope.getRequestTypeById(requestTypeId);
+  };
+
+  $scope.removeRequestType = function(requestTypeId) {
+    var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
+    $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
+    $scope.message = "Type de congés '" + requestTypeToRemove.description + "' supprimé." ;
+  }
+
+}
+
 function AddRequestCtrl($scope, $log, $location) {
   
   $log.info("Init AddRequestCtrl");
@@ -64,6 +86,30 @@ function AddRequestCtrl($scope, $log, $location) {
     $scope.requests.push(angular.copy(newRequest));
     $location.path('/myRequests');
     $scope.message = "Demande de congé ajoutée." ;
+  }
+
+}
+
+function MyRequestsCtrl($scope, $log, $location) {
+  
+  $log.info("Init MyRequestsCtrl");
+
+  $scope.selectRequest = function(requestId) {
+    $scope.selectedRequest = $scope.getRequestById(requestId);
+  };
+
+  $scope.getUserRequests = function(userId) {
+    return $.grep($scope.requests, function(e){ return e.user == userId; });
+  }
+
+  $scope.removeRequest = function(requestId) {
+    $log.info("requestId "+requestId);
+    var requestToRemove = $scope.getRequestById(requestId);
+    $log.info("requestToRemove "+JSON.stringify(requestToRemove));
+    $log.info("&"+$scope.getRequestTypeById(requestToRemove.type));
+    $log.info("&"+requestToRemove.du);
+    $scope.message = "Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + formatDate(requestToRemove.du) + " au " + formatDate(requestToRemove.au) + " supprimée." ;
+    $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);    
   }
 
 }
@@ -113,18 +159,6 @@ function MainCtrl($scope, $log, $location) {
     { id: 5, type: 5, du: new Date(2010, 10, 22), au: new Date(2010, 10, 24), observation: 'S‘il vous plait',  reponse: '',             statut: 1, user: 2}
   ];
 
-  $scope.selectRequest = function(requestId) {
-    $scope.selectedRequest = $.grep($scope.requests, function(e){ return e.id == requestId; })[0];
-  };
-
-  $scope.selectRequestType = function(requestTypeId) {
-    $scope.selectedRequestType = $.grep($scope.requestTypes, function(e){ return e.id == requestTypeId; })[0];
-  };
-
-  $scope.getUserRequests = function(userId) {
-    return $.grep($scope.requests, function(e){ return e.user == userId; });
-  }
-
   $scope.getUserById = function(userId) {
     return $.grep($scope.users, function(e){ return e.id == userId; })[0];
   }
@@ -143,27 +177,6 @@ function MainCtrl($scope, $log, $location) {
 
   $scope.getRequestStatusById = function(requestStatusId) {
     return $.grep($scope.requestStatus, function(e){ return e.id == requestStatusId; })[0];
-  }
-
-  $scope.addRequestType = function(description) {
-    $scope.requestTypes.push({ id: getNextId($scope.requestTypes), description: description });
-    $scope.message = "Type de congés '" + description + "' ajouté." ;
-  }
-
-  $scope.removeRequestType = function(requestTypeId) {
-    var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
-    $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
-    $scope.message = "Type de congés '" + requestTypeToRemove.description + "' supprimé." ;
-  }
-
-  $scope.removeRequest = function(requestId) {
-    $log.info("requestId "+requestId);
-    var requestToRemove = $scope.getRequestById(requestId);
-    $log.info("requestToRemove "+JSON.stringify(requestToRemove));
-    $log.info("&"+$scope.getRequestTypeById(requestToRemove.type));
-    $log.info("&"+requestToRemove.du);
-    $scope.message = "Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + formatDate(requestToRemove.du) + " au " + formatDate(requestToRemove.au) + " supprimée." ;
-    $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);    
   }
 
   $scope.signin = function(login, password) {
