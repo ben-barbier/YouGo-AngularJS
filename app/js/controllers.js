@@ -103,7 +103,7 @@ function MyRequestsCtrl($scope, $log, $location) {
   $log.info("Init MyRequestsCtrl");
 
   $scope.selectRequest = function(requestId) {
-    $scope.selectedRequest = $scope.getRequestById(requestId);
+    $scope.selectedRequest = angular.copy($scope.getRequestById(requestId));
   };
 
   $scope.getUserRequests = function(userId) {
@@ -118,6 +118,14 @@ function MyRequestsCtrl($scope, $log, $location) {
     $log.info("&"+requestToRemove.du);
     $scope.message = "Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + $scope.formatDate(requestToRemove.du) + " au " + $scope.formatDate(requestToRemove.au) + " supprimée." ;
     $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);    
+  }
+
+  $scope.updateRequest = function(request) {
+    for (var i in $scope.requests) {
+     if ($scope.requests[i].id == request.id) {
+        $scope.requests[i] = request;
+     }
+   }
   }
 
 }
