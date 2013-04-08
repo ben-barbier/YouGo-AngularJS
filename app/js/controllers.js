@@ -29,7 +29,7 @@ function UserCtrl($scope, $log, $location) {
 
 }
 
-function AddUserTypeCtrl($scope, $log, $location) {
+function UserTypeCtrl($scope, $log, $location) {
   
   $log.info("Init AddUserTypeCtrl");
 
@@ -37,6 +37,16 @@ function AddUserTypeCtrl($scope, $log, $location) {
     $scope.userTypes.push({ id: $scope.getNextId($scope.userTypes), description: description });
     $scope.message = "Type d'utilisateurs '" + description + "' ajouté." ;
     $scope.newDescription = "";
+  }
+
+  $scope.selectUserType = function(userTypeId) {
+    $scope.selectedUserType = $scope.getUserTypeById(userTypeId);
+  };
+
+  $scope.removeUserType = function(userTypeId) {
+    var userTypeToRemove = $scope.getUserTypeById(userTypeId);
+    $scope.userTypes.splice($.inArray(userTypeToRemove, $scope.userTypes),1);
+    $scope.message = "Type d'utilisateurs '" + userTypeToRemove.description + "' supprimé." ;
   }
 
 }
@@ -111,10 +121,6 @@ function MainCtrl($scope, $log, $location) {
     $scope.selectedRequestType = $.grep($scope.requestTypes, function(e){ return e.id == requestTypeId; })[0];
   };
 
-  $scope.selectUserType = function(userTypeId) {
-    $scope.selectedUserType = $.grep($scope.userTypes, function(e){ return e.id == userTypeId; })[0];
-  };
-
   $scope.getUserRequests = function(userId) {
     return $.grep($scope.requests, function(e){ return e.user == userId; });
   }
@@ -137,12 +143,6 @@ function MainCtrl($scope, $log, $location) {
 
   $scope.getRequestStatusById = function(requestStatusId) {
     return $.grep($scope.requestStatus, function(e){ return e.id == requestStatusId; })[0];
-  }
-
-  $scope.removeUserType = function(userTypeId) {
-    var userTypeToRemove = $scope.getUserTypeById(userTypeId);
-    $scope.userTypes.splice($.inArray(userTypeToRemove, $scope.userTypes),1);
-    $scope.message = "Type d'utilisateurs '" + userTypeToRemove.description + "' supprimé." ;
   }
 
   $scope.addRequestType = function(description) {
