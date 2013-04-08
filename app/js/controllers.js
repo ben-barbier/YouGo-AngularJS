@@ -2,9 +2,21 @@
 
 /* Controllers */
 
-function NewRequestCtrl($scope, $log, $location) {
+function AddUserTypeCtrl($scope, $log, $location) {
   
-  $log.info("Init NewRequestCtrl");
+  $log.info("Init AddUserTypeCtrl");
+
+  $scope.addUserType = function(description) {
+    $scope.userTypes.push({ id: $scope.getNextId($scope.userTypes), description: description });
+    $scope.message = "Type d'utilisateurs '" + description + "' ajouté." ;
+    $scope.newDescription = "";
+  }
+
+}
+
+function AddRequestCtrl($scope, $log, $location) {
+  
+  $log.info("Init AddRequestCtrl");
 
   $scope.newRequest = {type: 1};
 
@@ -103,11 +115,6 @@ function MainCtrl($scope, $log, $location) {
 
   $scope.getRequestStatusById = function(requestStatusId) {
     return $.grep($scope.requestStatus, function(e){ return e.id == requestStatusId; })[0];
-  }
-
-  $scope.addUserType = function(description) {
-    $scope.userTypes.push({ id: getNextId($scope.userTypes), description: description });
-    $scope.message = "Type d'utilisateurs '" + description + "' ajouté." ;
   }
 
   $scope.removeUserType = function(userTypeId) {
