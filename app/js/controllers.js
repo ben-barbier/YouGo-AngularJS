@@ -13,7 +13,7 @@ function UserCtrl($scope, $log, $location) {
     newUser['actif'] = (newUser.actif==true)?true:false;
     newUser['admin'] = (newUser.admin==true)?true:false;
     $scope.users.push(angular.copy(newUser));
-    $scope.message = "Utilisateur " + newUser.nom + " ajouté." ;
+    $scope.displayMessage("Utilisateur " + newUser.nom + " ajouté.");
     $scope.newUser = {type: 1};
   }
 
@@ -24,13 +24,14 @@ function UserCtrl($scope, $log, $location) {
   $scope.removeUser = function(userId) {
     var userToRemove = $scope.getUserById(userId);
     $scope.users.splice($.inArray(userToRemove, $scope.users),1);
-    $scope.message = "Utilisateur " + userToRemove.nom + " supprimé." ;
+    $scope.displayMessage("Utilisateur " + userToRemove.nom + " supprimé.");
   }
 
   $scope.updateUser = function(user) {
     for (var i in $scope.users) {
       if ($scope.users[i].id == user.id) {
         $scope.users[i] = user;
+        $scope.displayMessage("Utilisateur " + user.nom + " modifié.");
       }
     }
   }
@@ -43,7 +44,7 @@ function UserTypeCtrl($scope, $log, $location) {
 
   $scope.addUserType = function(description) {
     $scope.userTypes.push({ id: $scope.getNextId($scope.userTypes), description: description });
-    $scope.message = "Type d'utilisateurs '" + description + "' ajouté." ;
+    $scope.displayMessage("Type d'utilisateurs '" + description + "' ajouté.");
     $scope.newDescription = "";
   }
 
@@ -54,11 +55,12 @@ function UserTypeCtrl($scope, $log, $location) {
   $scope.removeUserType = function(userTypeId) {
     var userTypeToRemove = $scope.getUserTypeById(userTypeId);
     $scope.userTypes.splice($.inArray(userTypeToRemove, $scope.userTypes),1);
-    $scope.message = "Type d'utilisateurs '" + userTypeToRemove.description + "' supprimé." ;
+    $scope.displayMessage("Type d'utilisateurs '" + userTypeToRemove.description + "' supprimé.");
   }
 
   $scope.updateUserType = function(userType) {
     $scope.userTypes[(userType.id - 1)].description = userType.description;
+    $scope.displayMessage("Type d'utilisateurs '" + userType.description + "' modifié.");
   }
 
 }
@@ -69,7 +71,7 @@ function RequestTypeCtrl($scope, $log, $location) {
 
   $scope.addRequestType = function(description) {
     $scope.requestTypes.push({ id: $scope.getNextId($scope.requestTypes), description: description });
-    $scope.message = "Type de congés '" + description + "' ajouté." ;
+    $scope.displayMessage("Type de congés '" + description + "' ajouté.");
     $scope.newDescription = "";
   }
 
@@ -80,11 +82,12 @@ function RequestTypeCtrl($scope, $log, $location) {
   $scope.removeRequestType = function(requestTypeId) {
     var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
     $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
-    $scope.message = "Type de congés '" + requestTypeToRemove.description + "' supprimé." ;
+    $scope.displayMessage("Type de congés '" + requestTypeToRemove.description + "' supprimé.");
   }
 
   $scope.updateRequestType = function(requestType) {
     $scope.requestTypes[(requestType.id - 1)].description = requestType.description;
+    $scope.displayMessage("Type de congés '" + requestType.description + "' modifié.");
   }
 
 }
@@ -101,7 +104,7 @@ function AddRequestCtrl($scope, $log, $location) {
     newRequest['user'] = $scope.user.id;
     $scope.requests.push(angular.copy(newRequest));
     $location.path('/myRequests');
-    $scope.message = "Demande de congé ajoutée." ;
+    $scope.displayMessage("Demande de congé ajoutée.");
   }
 
 }
@@ -119,15 +122,16 @@ function MyRequestsCtrl($scope, $log, $location) {
   }
 
   $scope.removeRequest = function(requestId) {
-    var requestToRemove = $scope.getRequestById(requestId);
-    $scope.message = "Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + $scope.formatDate(requestToRemove.du) + " au " + $scope.formatDate(requestToRemove.au) + " supprimée." ;
-    $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);    
+    var requestToRemove = $scope.getRequestById(requestId);    
+    $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);
+    $scope.displayMessage("Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + $scope.formatDate(requestToRemove.du) + " au " + $scope.formatDate(requestToRemove.au) + " supprimée.");
   }
 
   $scope.updateRequest = function(request) {
     for (var i in $scope.requests) {
       if ($scope.requests[i].id == request.id) {
         $scope.requests[i] = request;
+        $scope.displayMessage("Demande de " + $scope.getRequestTypeById(request.type).description + " modifiée.");
       }
     }
   }
@@ -138,6 +142,7 @@ function MainCtrl($scope, $log, $location) {
 
   $log.info("Init MainCtrl");
 
+  $scope.infoDisplayTime = 3000;
   $scope.user = null;
   $scope.message = "";
 
@@ -209,13 +214,13 @@ function MainCtrl($scope, $log, $location) {
       $location.path('/myRequests');
       $scope.message = "";
     } else {
-      $scope.message = "Login ou mot de passe incorrect." ;
+      $scope.displayMessage("Login ou mot de passe incorrect.");
     }
   }
 
   $scope.signout = function(login, password) {
     $scope.user = null;
-    $scope.message = "Déconnecté...";
+    $scope.displayMessage("Déconnecté...");
     $location.path('/signin');
   }
 
@@ -248,6 +253,11 @@ function MainCtrl($scope, $log, $location) {
     var m = date.getMonth() + 1;
     var y = date.getFullYear();
     return '' + (d <= 9 ? '0' + d : d) + '/' + (m<=9 ? '0' + m : m) + '/' + y;
+  }
+
+  $scope.displayMessage = function(message) {
+    $scope.message = message;
+    $('.alert').fadeIn().delay($scope.infoDisplayTime).fadeOut();
   }
 
 }
