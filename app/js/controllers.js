@@ -18,13 +18,21 @@ function UserCtrl($scope, $log, $location) {
   }
 
   $scope.selectUser = function(userId) {
-    $scope.selectedUser = $scope.getUserById(userId);
+    $scope.selectedUser = angular.copy($scope.getUserById(userId));
   };
 
   $scope.removeUser = function(userId) {
     var userToRemove = $scope.getUserById(userId);
     $scope.users.splice($.inArray(userToRemove, $scope.users),1);
     $scope.message = "Utilisateur " + userToRemove.nom + " supprimé." ;
+  }
+
+  $scope.updateUser = function(user) {
+    for (var i in $scope.users) {
+      if ($scope.users[i].id == user.id) {
+        $scope.users[i] = user;
+      }
+    }
   }
 
 }
@@ -118,10 +126,10 @@ function MyRequestsCtrl($scope, $log, $location) {
 
   $scope.updateRequest = function(request) {
     for (var i in $scope.requests) {
-     if ($scope.requests[i].id == request.id) {
+      if ($scope.requests[i].id == request.id) {
         $scope.requests[i] = request;
-     }
-   }
+      }
+    }
   }
 
 }
