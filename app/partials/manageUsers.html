@@ -4,7 +4,7 @@
 
   <h1>Utilisateurs</h1>
   <div>
-    <div class="alert">{{message}}</div>
+    <div class="alert" ng-hide="message==''">{{message}}</div>
     <div>
       <a class="btn btn-primary" href="#addUserModal" data-toggle="modal">Ajouter un utilisateur</a>
       <br />
