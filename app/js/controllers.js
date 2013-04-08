@@ -62,13 +62,17 @@ function RequestTypeCtrl($scope, $log, $location) {
   }
 
   $scope.selectRequestType = function(requestTypeId) {
-    $scope.selectedRequestType = $scope.getRequestTypeById(requestTypeId);
+    $scope.selectedRequestType = angular.copy($scope.getRequestTypeById(requestTypeId));
   };
 
   $scope.removeRequestType = function(requestTypeId) {
     var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
     $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
     $scope.message = "Type de congés '" + requestTypeToRemove.description + "' supprimé." ;
+  }
+
+  $scope.updateRequestType = function(requestType) {
+    $scope.requestTypes[(requestType.id - 1)].description = requestType.description;
   }
 
 }
