@@ -2,6 +2,23 @@
 
 /* Controllers */
 
+function AddUserCtrl($scope, $log, $location) {
+  
+  $log.info("Init AddUserCtrl");
+
+  $scope.newUser = {type: 1};
+
+  $scope.addUser = function(newUser) {
+    newUser['id'] = $scope.getNextId($scope.users);
+    newUser['actif'] = (newUser.actif==true)?true:false;
+    newUser['admin'] = (newUser.admin==true)?true:false;
+    $scope.users.push(angular.copy(newUser));
+    $scope.message = "Utilisateur " + newUser.nom + " ajouté." ;
+    $scope.newUser = {type: 1};
+  }
+
+}
+
 function AddUserTypeCtrl($scope, $log, $location) {
   
   $log.info("Init AddUserTypeCtrl");
@@ -35,7 +52,6 @@ function MainCtrl($scope, $log, $location) {
 
   $log.info("Init MainCtrl");
 
-  $scope.newUser = {type: 1};
   $scope.user = null;
   $scope.message = "";
 
@@ -132,14 +148,6 @@ function MainCtrl($scope, $log, $location) {
     var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
     $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
     $scope.message = "Type de congés '" + requestTypeToRemove.description + "' supprimé." ;
-  }
-
-  $scope.addUser = function(newUser) {
-    newUser['id'] = getNextId($scope.users);
-    newUser['actif'] = (newUser.actif==true)?true:false;
-    newUser['admin'] = (newUser.admin==true)?true:false;
-    $scope.users.push(angular.copy(newUser));
-    $scope.message = "Utilisateur " + newUser.nom + " ajouté." ;
   }
 
   $scope.removeUser = function(userId) {
