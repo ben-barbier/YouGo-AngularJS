@@ -2,12 +2,28 @@
 
 /* Controllers */
 
+function NewRequestCtrl($scope, $log, $location) {
+  
+  $log.info("Init NewRequestCtrl");
+
+  $scope.newRequest = {type: 1};
+
+  $scope.addRequest = function(newRequest) {
+    newRequest['id'] = $scope.getNextId($scope.requests);
+    newRequest['statut'] = 1;
+    newRequest['user'] = $scope.user.id;
+    $scope.requests.push(angular.copy(newRequest));
+    $location.path('/myRequests');
+    $scope.message = "Demande de congé ajoutée." ;
+  }
+
+}
+
 function MainCtrl($scope, $log, $location) {
 
   $log.info("Init MainCtrl");
 
   $scope.newUser = {type: 1};
-  $scope.newRequest = {type: 1};
   $scope.user = null;
   $scope.message = "";
 
@@ -125,15 +141,6 @@ function MainCtrl($scope, $log, $location) {
     $scope.message = "Utilisateur " + userToRemove.nom + " supprimé." ;
   }
 
-  $scope.addRequest = function(newRequest) {
-    newRequest['id'] = getNextId($scope.requests);
-    newRequest['statut'] = 1;
-    newRequest['user'] = $scope.user.id;
-    $scope.requests.push(angular.copy(newRequest));
-    $location.path('/myRequests');
-    $scope.message = "Demande de congé ajoutée." ;
-  }
-
   $scope.removeRequest = function(requestId) {
     $log.info("requestId "+requestId);
     var requestToRemove = $scope.getRequestById(requestId);
@@ -160,6 +167,7 @@ function MainCtrl($scope, $log, $location) {
 
   $scope.signout = function(login, password) {
     $scope.user = null;
+    $scope.message = "Déconnecté...";
     $location.path('/signin');
   }
 
@@ -176,7 +184,7 @@ function MainCtrl($scope, $log, $location) {
     }
   }
 
-  function getNextId(list) {
+  $scope.getNextId = function(list) {
     var newId = 0;
     for (var i = 0; i < list.length; i++) {
       if (list[i].id > newId) {
@@ -187,7 +195,7 @@ function MainCtrl($scope, $log, $location) {
     return newId;
   }
 
-  function formatDate(date) {
+  $scope.formatDate = function(date) {
     var d = date.getDate();
     var m = date.getMonth() + 1;
     var y = date.getFullYear();
