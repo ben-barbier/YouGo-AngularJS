@@ -40,13 +40,17 @@ function UserTypeCtrl($scope, $log, $location) {
   }
 
   $scope.selectUserType = function(userTypeId) {
-    $scope.selectedUserType = $scope.getUserTypeById(userTypeId);
+    $scope.selectedUserType = angular.copy($scope.getUserTypeById(userTypeId));
   };
 
   $scope.removeUserType = function(userTypeId) {
     var userTypeToRemove = $scope.getUserTypeById(userTypeId);
     $scope.userTypes.splice($.inArray(userTypeToRemove, $scope.userTypes),1);
     $scope.message = "Type d'utilisateurs '" + userTypeToRemove.description + "' supprimé." ;
+  }
+
+  $scope.updateUserType = function(userType) {
+    $scope.userTypes[(userType.id - 1)].description = userType.description;
   }
 
 }
