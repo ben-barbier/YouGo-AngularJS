@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function AddUserCtrl($scope, $log, $location) {
+function UserCtrl($scope, $log, $location) {
   
   $log.info("Init AddUserCtrl");
 
@@ -15,6 +15,16 @@ function AddUserCtrl($scope, $log, $location) {
     $scope.users.push(angular.copy(newUser));
     $scope.message = "Utilisateur " + newUser.nom + " ajouté." ;
     $scope.newUser = {type: 1};
+  }
+
+  $scope.selectUser = function(userId) {
+    $scope.selectedUser = $scope.getUserById(userId);
+  };
+
+  $scope.removeUser = function(userId) {
+    var userToRemove = $scope.getUserById(userId);
+    $scope.users.splice($.inArray(userToRemove, $scope.users),1);
+    $scope.message = "Utilisateur " + userToRemove.nom + " supprimé." ;
   }
 
 }
@@ -105,16 +115,12 @@ function MainCtrl($scope, $log, $location) {
     $scope.selectedUserType = $.grep($scope.userTypes, function(e){ return e.id == userTypeId; })[0];
   };
 
-  $scope.selectUser = function(userId) {
-    $scope.selectedUser = $.grep($scope.users, function(e){ return e.id == userId; })[0];
-  };
+  $scope.getUserRequests = function(userId) {
+    return $.grep($scope.requests, function(e){ return e.user == userId; });
+  }
 
   $scope.getUserById = function(userId) {
     return $.grep($scope.users, function(e){ return e.id == userId; })[0];
-  }
-
-  $scope.getUserRequests = function(userId) {
-    return $.grep($scope.requests, function(e){ return e.user == userId; });
   }
 
   $scope.getRequestById = function(requestId) {
@@ -148,12 +154,6 @@ function MainCtrl($scope, $log, $location) {
     var requestTypeToRemove = $scope.getRequestTypeById(requestTypeId);
     $scope.requestTypes.splice($.inArray(requestTypeToRemove, $scope.requestTypes),1);
     $scope.message = "Type de congés '" + requestTypeToRemove.description + "' supprimé." ;
-  }
-
-  $scope.removeUser = function(userId) {
-    var userToRemove = $scope.getUserById(userId);
-    $scope.users.splice($.inArray(userToRemove, $scope.users),1);
-    $scope.message = "Utilisateur " + userToRemove.nom + " supprimé." ;
   }
 
   $scope.removeRequest = function(requestId) {
