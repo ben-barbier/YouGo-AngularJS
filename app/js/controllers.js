@@ -111,11 +111,7 @@ function MyRequestsCtrl($scope, $log, $location) {
   }
 
   $scope.removeRequest = function(requestId) {
-    $log.info("requestId "+requestId);
     var requestToRemove = $scope.getRequestById(requestId);
-    $log.info("requestToRemove "+JSON.stringify(requestToRemove));
-    $log.info("&"+$scope.getRequestTypeById(requestToRemove.type));
-    $log.info("&"+requestToRemove.du);
     $scope.message = "Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + $scope.formatDate(requestToRemove.du) + " au " + $scope.formatDate(requestToRemove.au) + " supprimée." ;
     $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);    
   }
