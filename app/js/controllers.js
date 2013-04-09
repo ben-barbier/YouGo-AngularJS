@@ -109,7 +109,7 @@ function AddRequestCtrl($scope, $log, $location, getNextID) {
 
 }
 
-function MyRequestsCtrl($scope, $log, $location) {
+function MyRequestsCtrl($scope, $log, $location, formatDate) {
   
   $log.info("Init MyRequestsCtrl");
 
@@ -124,7 +124,7 @@ function MyRequestsCtrl($scope, $log, $location) {
   $scope.removeRequest = function(requestId) {
     var requestToRemove = $scope.getRequestById(requestId);    
     $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);
-    $scope.displayMessage("Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + $scope.formatDate(requestToRemove.du) + " au " + $scope.formatDate(requestToRemove.au) + " supprimée.");
+    $scope.displayMessage("Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + formatDate(requestToRemove.du) + " au " + formatDate(requestToRemove.au) + " supprimée.");
   }
 
   $scope.updateRequest = function(request) {
@@ -235,13 +235,6 @@ function MainCtrl($scope, $log, $location) {
       $log.info("checkLogin : OK");
       return true;  
     }
-  }
-
-  $scope.formatDate = function(date) {
-    var d = date.getDate();
-    var m = date.getMonth() + 1;
-    var y = date.getFullYear();
-    return '' + (d <= 9 ? '0' + d : d) + '/' + (m<=9 ? '0' + m : m) + '/' + y;
   }
 
   $scope.displayMessage = function(message) {

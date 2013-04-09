@@ -19,3 +19,12 @@ services.factory('getNextID', function(){
     return newId;
   }
 });
+
+services.factory('formatDate', function(){
+  return function(date) {
+    var d = date.getDate();
+    var m = date.getMonth() + 1;
+    var y = date.getFullYear();
+    return '' + (d <= 9 ? '0' + d : d) + '/' + (m<=9 ? '0' + m : m) + '/' + y;
+  }
+});
