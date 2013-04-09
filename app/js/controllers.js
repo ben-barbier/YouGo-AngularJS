@@ -2,14 +2,14 @@
 
 /* Controllers */
 
-function UserCtrl($scope, $log, $location) {
+function UserCtrl($scope, $log, $location, getNextID) {
   
   $log.info("Init UserCtrl");
 
   $scope.newUser = {type: 1};
 
   $scope.addUser = function(newUser) {
-    newUser['id'] = $scope.getNextId($scope.users);
+    newUser['id'] = getNextID($scope.users);
     newUser['actif'] = (newUser.actif==true)?true:false;
     newUser['admin'] = (newUser.admin==true)?true:false;
     $scope.users.push(angular.copy(newUser));
@@ -38,12 +38,12 @@ function UserCtrl($scope, $log, $location) {
 
 }
 
-function UserTypeCtrl($scope, $log, $location) {
+function UserTypeCtrl($scope, $log, $location, getNextID) {
   
   $log.info("Init UserTypeCtrl");
 
   $scope.addUserType = function(description) {
-    $scope.userTypes.push({ id: $scope.getNextId($scope.userTypes), description: description });
+    $scope.userTypes.push({ id: getNextID($scope.userTypes), description: description });
     $scope.displayMessage("Type d'utilisateurs '" + description + "' ajouté.");
     $scope.newDescription = "";
   }
@@ -65,12 +65,12 @@ function UserTypeCtrl($scope, $log, $location) {
 
 }
 
-function RequestTypeCtrl($scope, $log, $location) {
+function RequestTypeCtrl($scope, $log, $location, getNextID) {
   
   $log.info("Init RequestTypeCtrl");
 
   $scope.addRequestType = function(description) {
-    $scope.requestTypes.push({ id: $scope.getNextId($scope.requestTypes), description: description });
+    $scope.requestTypes.push({ id: getNextID($scope.requestTypes), description: description });
     $scope.displayMessage("Type de congés '" + description + "' ajouté.");
     $scope.newDescription = "";
   }
@@ -92,14 +92,14 @@ function RequestTypeCtrl($scope, $log, $location) {
 
 }
 
-function AddRequestCtrl($scope, $log, $location) {
+function AddRequestCtrl($scope, $log, $location, getNextID) {
   
   $log.info("Init AddRequestCtrl");
 
   $scope.newRequest = {type: 1};
 
   $scope.addRequest = function(newRequest) {
-    newRequest['id'] = $scope.getNextId($scope.requests);
+    newRequest['id'] = getNextID($scope.requests);
     newRequest['statut'] = 1;
     newRequest['user'] = $scope.user.id;
     $scope.requests.push(angular.copy(newRequest));
@@ -235,17 +235,6 @@ function MainCtrl($scope, $log, $location) {
       $log.info("checkLogin : OK");
       return true;  
     }
-  }
-
-  $scope.getNextId = function(list) {
-    var newId = 0;
-    for (var i = 0; i < list.length; i++) {
-      if (list[i].id > newId) {
-        newId = list[i].id;
-      }
-    };
-    newId++;
-    return newId;
   }
 
   $scope.formatDate = function(date) {
