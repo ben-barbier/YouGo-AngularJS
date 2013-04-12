@@ -24,11 +24,11 @@
         <tbody>
           <tr ng-repeat="user in users">
             <td>{{user.id}}</td>
-            <td>{{user.actif}}</td>
+            <td>{{user.active}}</td>
             <td>{{user.admin}}</td>
-            <td>{{user.prenom}} {{user.nom}}</td>
+            <td>{{user.fullName}}</td>
             <td>{{user.email}}</td>
-            <td>{{getUserTypeById(user.type).description}}</td>
+            <td>{{getUserTypeById(user.typeId).description}}</td>
             <td><a href="#editUserModal" data-toggle="modal" ng-click="selectUser(user.id);"><i class="icon-pencil"></i></a></td>
             <td><a href="#deleteUserModal" data-toggle="modal" ng-click="selectUser(user.id);"><i class="icon-trash"></i></a></td>
           </tr>
@@ -44,7 +44,7 @@
       <h3 id="deleteUserModalLabel">Supprimer le compte utilisateur</h3>
     </div>
     <div class="modal-body">
-      <p>Etes vous sur de vouloir supprimer le compte utilisateur de<br />{{selectedUser.nom}} ?</p>
+      <p>Etes vous sur de vouloir supprimer le compte utilisateur de<br />{{selectedUser.fullName}} ?</p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
           <td>Nom : </td>
-          <td><input type="text" name="name" ng-model="selectedUser.nom"/></td>
+          <td><input type="text" name="name" ng-model="selectedUser.fullName"/></td>
         </tr>
         <tr>
           <td>Email : </td>
@@ -74,7 +74,7 @@
         </tr>
         <tr>
           <td>Actif ? : </td>
-          <td><input type="checkbox" name="isActive" ng-model="selectedUser.actif"/></td>
+          <td><input type="checkbox" name="isActive" ng-model="selectedUser.active"/></td>
         </tr>
         <tr>
           <td>Admin ? : </td>
@@ -83,7 +83,7 @@
         <tr>
           <td>Type : </td>
           <td>
-            <select name="type" ng-model="selectedUser.type" ng-options="ut.id as ut.description for ut in userTypes"></select>
+            <select name="type" ng-model="selectedUser.typeId" ng-options="ut.id as ut.description for ut in userTypes"></select>
           </td>
         </tr>
       </table>
@@ -104,7 +104,7 @@
       <table>
         <tr>
           <td>Nom : </td>
-          <td><input type="text" name="name" ng-model="newUser.nom"/></td>
+          <td><input type="text" name="name" ng-model="newUser.fullName"/></td>
         </tr>
         <tr>
           <td>Email : </td>
@@ -112,7 +112,7 @@
         </tr>
         <tr>
           <td>Actif ? : </td>
-          <td><input type="checkbox" name="isActive" ng-model="newUser.actif"/></td>
+          <td><input type="checkbox" name="isActive" ng-model="newUser.active"/></td>
         </tr>
         <tr>
           <td>Admin ? : </td>
@@ -121,7 +121,7 @@
         <tr>
           <td>Type : </td>
           <td>
-            <select name="type" ng-model="newUser.type" ng-options="ut.id as ut.description for ut in userTypes"></select>
+            <select name="type" ng-model="newUser.typeId" ng-options="ut.id as ut.description for ut in userTypes"></select>
           </td>
         </tr>
       </table>

@@ -6,15 +6,15 @@ function UserCtrl($scope, $log, $location, getNextID) {
   
   $log.info("Init UserCtrl");
 
-  $scope.newUser = {type: 1};
+  $scope.newUser = {typeId: 1};
 
   $scope.addUser = function(newUser) {
     newUser['id'] = getNextID($scope.users);
-    newUser['actif'] = (newUser.actif==true)?true:false;
+    newUser['active'] = (newUser.active==true)?true:false;
     newUser['admin'] = (newUser.admin==true)?true:false;
     $scope.users.push(angular.copy(newUser));
-    $scope.displayMessage("Utilisateur " + newUser.nom + " ajouté.");
-    $scope.newUser = {type: 1};
+    $scope.displayMessage("Utilisateur " + newUser.fullName + " ajouté.");
+    $scope.newUser = {typeId: 1};
   }
 
   $scope.selectUser = function(userId) {
@@ -24,14 +24,14 @@ function UserCtrl($scope, $log, $location, getNextID) {
   $scope.removeUser = function(userId) {
     var userToRemove = $scope.getUserById(userId);
     $scope.users.splice($.inArray(userToRemove, $scope.users),1);
-    $scope.displayMessage("Utilisateur " + userToRemove.nom + " supprimé.");
+    $scope.displayMessage("Utilisateur " + userToRemove.fullName + " supprimé.");
   }
 
   $scope.updateUser = function(user) {
     for (var i in $scope.users) {
       if ($scope.users[i].id == user.id) {
         $scope.users[i] = user;
-        $scope.displayMessage("Utilisateur " + user.nom + " modifié.");
+        $scope.displayMessage("Utilisateur " + user.fullName + " modifié.");
       }
     }
   }
@@ -164,11 +164,7 @@ function MainCtrl($scope, $log, $location) {
     { id: 4, description: 'Commercial' }
   ];
 
-  $scope.users = [
-    { id: 1, actif: true,  admin: false, nom: 'Kristina CHUNG', email: 'kristina.kristina@company.com', type: 1 },
-    { id: 2, actif: true,  admin: true,  nom: 'Paige CHEN',     email: 'paige.paige@company.com',       type: 3 },
-    { id: 3, actif: false, admin: false, nom: 'Sherri MELTON',  email: 'sherri.sherri@company.com',     type: 4 }
-  ];
+  $scope.users = sampleUsers;
 
   $scope.requestStatus = [
     { id: 1, description: 'En attente', editable: true },
@@ -228,7 +224,7 @@ function MainCtrl($scope, $log, $location) {
     if ($scope.user == null) {
       $log.info("checkLogin : KO (not logged)");
       $location.path('/signin');
-    } else if ($scope.user.actif != true) {
+    } else if ($scope.user.active != true) {
       $log.info("checkLogin : KO (user not active)");
       $location.path('/signin');
     } else {
