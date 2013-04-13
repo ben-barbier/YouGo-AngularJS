@@ -4,7 +4,7 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
-var services = angular.module('myApp.services', []);
+var services = angular.module('myApp.services', ['ngResource']);
 services.value('version', '0.1');
 
 services.factory('getNextID', function(){
