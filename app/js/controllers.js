@@ -119,10 +119,6 @@ function MyRequestsCtrl($scope, $log, $location, formatDate) {
     $scope.selectedRequest['to'] = new Date($scope.selectedRequest['to']);
   };
 
-  $scope.getUserRequests = function(userId) {
-    return $.grep($scope.requests, function(e){ return e.user == userId; });
-  }
-
   $scope.removeRequest = function(requestId) {
     var requestToRemove = $scope.getRequestById(requestId);    
     $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);
@@ -145,27 +141,17 @@ function MainCtrl($scope, $log, $location) {
   $log.info("Init MainCtrl");
 
   $scope.infoDisplayTime = 3000;
-  $scope.user = null;
-  $scope.message = "";
-
   $scope.requestTypes = sampleRequestTypes;
   $scope.userTypes = sampleUserTypes;
   $scope.users = sampleUsers;
-
-
+  $scope.user = null;
+  $scope.requests = null;
+  $scope.message = "";
 
   $scope.requestStatus = [
     { id: 'PENDING',  description: 'En attente', editable: true },
     { id: 'ACCEPTED', description: 'Validé',     editable: false },
     { id: 'REFUSED',  description: 'Refusé',     editable: false }
-  ];
-
-  $scope.requests = [
-    { id: 1, typeId: 5, from: '2010-10-22T00:00:00Z', to: '2010-11-24T00:00:00Z', askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 1},
-    { id: 2, typeId: 1, from: '2010-12-23T00:00:00Z', to: '2011-04-01T00:00:00Z', askComment: 'Vacances de Noel', answerComment: '',             status: 'PENDING',  user: 1},
-    { id: 3, typeId: 8, from: '2011-03-17T00:00:00Z', to: '2011-03-17T00:00:00Z', askComment: '',                 answerComment: 'OK',           status: 'ACCEPTED', user: 1},
-    { id: 4, typeId: 4, from: '2011-01-03T00:00:00Z', to: '2011-02-04T00:00:00Z', askComment: '',                 answerComment: 'Pas possible', status: 'REFUSED',  user: 1},
-    { id: 5, typeId: 5, from: '2010-10-22T00:00:00Z', to: '2010-10-24T00:00:00Z', askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 2}
   ];
 
   $scope.getUserById = function(userId) {
@@ -191,14 +177,24 @@ function MainCtrl($scope, $log, $location) {
   $scope.signin = function(login, password) {
     if (login=='kristina.kristina@company.com' && password=='pass') {
       $scope.user = $scope.getUserById(1);
+      $scope.loadUserRequests(1);
       $location.path('/myRequests');
       $scope.message = "";
     } else if (login=='paige.paige@company.com' && password=='pass') {
       $scope.user = $scope.getUserById(2);
+      $scope.loadUserRequests(2);
       $location.path('/myRequests');
       $scope.message = "";
     } else {
       $scope.displayMessage("Login ou mot de passe incorrect.");
+    }
+  }
+
+  $scope.loadUserRequests = function(userId) {
+    if (userId == 1) {
+      $scope.requests = sampleUser1Requests;
+    } else if (userId == 2) {
+      $scope.requests = sampleUser2Requests;
     }
   }
 

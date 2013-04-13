@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="request in getUserRequests(user.id)">
+        <tr ng-repeat="request in requests">
           <td>{{getRequestTypeById(request.typeId).description}}</td>
           <td>{{request.from | date: 'dd/MM/yyyy'}}</td>
           <td>{{request.to   | date: 'dd/MM/yyyy'}}</td>
