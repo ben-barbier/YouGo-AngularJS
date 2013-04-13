@@ -115,6 +115,8 @@ function MyRequestsCtrl($scope, $log, $location, formatDate) {
 
   $scope.selectRequest = function(requestId) {
     $scope.selectedRequest = angular.copy($scope.getRequestById(requestId));
+    $scope.selectedRequest['from'] = new Date($scope.selectedRequest['from']);
+    $scope.selectedRequest['to'] = new Date($scope.selectedRequest['to']);
   };
 
   $scope.getUserRequests = function(userId) {
