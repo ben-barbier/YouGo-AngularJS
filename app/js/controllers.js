@@ -159,11 +159,11 @@ function MainCtrl($scope, $log, $location) {
   ];
 
   $scope.requests = [
-    { id: 1, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 1},
-    { id: 2, typeId: 1, from: new Date(2010, 11, 23), to: new Date(2011,  3,  1), askComment: 'Vacances de Noel', answerComment: '',             status: 'PENDING',  user: 1},
-    { id: 3, typeId: 8, from: new Date(2011, 2,  17), to: new Date(2011,  2, 17), askComment: '',                 answerComment: 'OK',           status: 'ACCEPTED', user: 1},
-    { id: 4, typeId: 4, from: new Date(2011, 1,   3), to: new Date(2011,  1,  4), askComment: '',                 answerComment: 'Pas possible', status: 'REFUSED',  user: 1},
-    { id: 5, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 2}
+    { id: 1, typeId: 5, from: '2010-10-22T00:00:00Z', to: '2010-11-24T00:00:00Z', askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 1},
+    { id: 2, typeId: 1, from: '2010-12-23T00:00:00Z', to: '2011-04-01T00:00:00Z', askComment: 'Vacances de Noel', answerComment: '',             status: 'PENDING',  user: 1},
+    { id: 3, typeId: 8, from: '2011-03-17T00:00:00Z', to: '2011-03-17T00:00:00Z', askComment: '',                 answerComment: 'OK',           status: 'ACCEPTED', user: 1},
+    { id: 4, typeId: 4, from: '2011-01-03T00:00:00Z', to: '2011-02-04T00:00:00Z', askComment: '',                 answerComment: 'Pas possible', status: 'REFUSED',  user: 1},
+    { id: 5, typeId: 5, from: '2010-10-22T00:00:00Z', to: '2010-10-24T00:00:00Z', askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 2}
   ];
 
   $scope.getUserById = function(userId) {
