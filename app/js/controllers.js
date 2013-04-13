@@ -100,7 +100,7 @@ function AddRequestCtrl($scope, $log, $location, getNextID) {
 
   $scope.addRequest = function(newRequest) {
     newRequest['id'] = getNextID($scope.requests);
-    newRequest['statut'] = 1;
+    newRequest['status'] = 'PENDING';
     newRequest['user'] = $scope.user.id;
     $scope.requests.push(angular.copy(newRequest));
     $location.path('/myRequests');
