@@ -153,17 +153,17 @@ function MainCtrl($scope, $log, $location) {
 
 
   $scope.requestStatus = [
-    { id: 1, description: 'En attente', editable: true },
-    { id: 2, description: 'Validé',     editable: false },
-    { id: 3, description: 'Refusé',     editable: false }
+    { id: 'PENDING',  description: 'En attente', editable: true },
+    { id: 'ACCEPTED', description: 'Validé',     editable: false },
+    { id: 'REFUSED',  description: 'Refusé',     editable: false }
   ];
 
   $scope.requests = [
-    { id: 1, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 1, user: 1},
-    { id: 2, typeId: 1, from: new Date(2010, 11, 23), to: new Date(2011,  3,  1), askComment: 'Vacances de Noel', answerComment: '',             status: 1, user: 1},
-    { id: 3, typeId: 8, from: new Date(2011, 2,  17), to: new Date(2011,  2, 17), askComment: '',                 answerComment: 'OK',           status: 2, user: 1},
-    { id: 4, typeId: 4, from: new Date(2011, 1,   3), to: new Date(2011,  1,  4), askComment: '',                 answerComment: 'Pas possible', status: 3, user: 1},
-    { id: 5, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 1, user: 2}
+    { id: 1, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 1},
+    { id: 2, typeId: 1, from: new Date(2010, 11, 23), to: new Date(2011,  3,  1), askComment: 'Vacances de Noel', answerComment: '',             status: 'PENDING',  user: 1},
+    { id: 3, typeId: 8, from: new Date(2011, 2,  17), to: new Date(2011,  2, 17), askComment: '',                 answerComment: 'OK',           status: 'ACCEPTED', user: 1},
+    { id: 4, typeId: 4, from: new Date(2011, 1,   3), to: new Date(2011,  1,  4), askComment: '',                 answerComment: 'Pas possible', status: 'REFUSED',  user: 1},
+    { id: 5, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 'PENDING',  user: 2}
   ];
 
   $scope.getUserById = function(userId) {
