@@ -124,14 +124,14 @@ function MyRequestsCtrl($scope, $log, $location, formatDate) {
   $scope.removeRequest = function(requestId) {
     var requestToRemove = $scope.getRequestById(requestId);    
     $scope.requests.splice($.inArray(requestToRemove, $scope.requests),1);
-    $scope.displayMessage("Demande de " + $scope.getRequestTypeById(requestToRemove.type).description + " du " + formatDate(requestToRemove.du) + " au " + formatDate(requestToRemove.au) + " supprimée.");
+    $scope.displayMessage("Demande de " + $scope.getRequestTypeById(requestToRemove.typeId).description + " du " + formatDate(requestToRemove.from) + " au " + formatDate(requestToRemove.to) + " supprimée.");
   }
 
   $scope.updateRequest = function(request) {
     for (var i in $scope.requests) {
       if ($scope.requests[i].id == request.id) {
         $scope.requests[i] = request;
-        $scope.displayMessage("Demande de " + $scope.getRequestTypeById(request.type).description + " modifiée.");
+        $scope.displayMessage("Demande de " + $scope.getRequestTypeById(request.typeId).description + " modifiée.");
       }
     }
   }
@@ -159,11 +159,11 @@ function MainCtrl($scope, $log, $location) {
   ];
 
   $scope.requests = [
-    { id: 1, type: 5, du: new Date(2010, 10, 22), au: new Date(2010, 10, 24), observation: 'S‘il vous plait',  reponse: '',             statut: 1, user: 1},
-    { id: 2, type: 1, du: new Date(2010, 11, 23), au: new Date(2011,  3,  1), observation: 'Vacances de Noel', reponse: '',             statut: 1, user: 1},
-    { id: 3, type: 8, du: new Date(2011, 2,  17), au: new Date(2011,  2, 17), observation: '',                 reponse: 'OK',           statut: 2, user: 1},
-    { id: 4, type: 4, du: new Date(2011, 1,   3), au: new Date(2011,  1,  4), observation: '',                 reponse: 'Pas possible', statut: 3, user: 1},
-    { id: 5, type: 5, du: new Date(2010, 10, 22), au: new Date(2010, 10, 24), observation: 'S‘il vous plait',  reponse: '',             statut: 1, user: 2}
+    { id: 1, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 1, user: 1},
+    { id: 2, typeId: 1, from: new Date(2010, 11, 23), to: new Date(2011,  3,  1), askComment: 'Vacances de Noel', answerComment: '',             status: 1, user: 1},
+    { id: 3, typeId: 8, from: new Date(2011, 2,  17), to: new Date(2011,  2, 17), askComment: '',                 answerComment: 'OK',           status: 2, user: 1},
+    { id: 4, typeId: 4, from: new Date(2011, 1,   3), to: new Date(2011,  1,  4), askComment: '',                 answerComment: 'Pas possible', status: 3, user: 1},
+    { id: 5, typeId: 5, from: new Date(2010, 10, 22), to: new Date(2010, 10, 24), askComment: 'S‘il vous plait',  answerComment: '',             status: 1, user: 2}
   ];
 
   $scope.getUserById = function(userId) {

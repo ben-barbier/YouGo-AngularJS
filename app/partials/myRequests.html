@@ -25,14 +25,14 @@
       </thead>
       <tbody>
         <tr ng-repeat="request in getUserRequests(user.id)">
-          <td>{{getRequestTypeById(request.type).description}}</td>
-          <td>{{request.du | date: 'dd/MM/yyyy'}}</td>
-          <td>{{request.au | date: 'dd/MM/yyyy'}}</td>
-          <td>{{request.observation}}</td>
-          <td>{{request.reponse}}</td>
-          <td>{{getRequestStatusById(request.statut).description}}</td>
-          <td><a ng-show="getRequestStatusById(request.statut).editable" href="#editRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-pencil"></i></a></td>
-          <td><a ng-show="getRequestStatusById(request.statut).editable" href="#deleteRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-trash"></i></a></td>
+          <td>{{getRequestTypeById(request.typeId).description}}</td>
+          <td>{{request.from | date: 'dd/MM/yyyy'}}</td>
+          <td>{{request.to   | date: 'dd/MM/yyyy'}}</td>
+          <td>{{request.askComment}}</td>
+          <td>{{request.answerComment}}</td>
+          <td>{{getRequestStatusById(request.status).description}}</td>
+          <td><a ng-show="getRequestStatusById(request.status).editable" href="#editRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-pencil"></i></a></td>
+          <td><a ng-show="getRequestStatusById(request.status).editable" href="#deleteRequestModal" data-toggle="modal" ng-click="selectRequest(request.id);"><i class="icon-trash"></i></a></td>
         </tr>
       </tbody>
     </table>
@@ -45,7 +45,7 @@
       <h3 id="deleteRequestModalLabel">Supprimer la demande de congé</h3>
     </div>
     <div class="modal-body">
-      <p>Etes vous sur de vouloir supprimer la demande <br /> de {{getRequestTypeById(selectedRequest.type).description}} du {{selectedRequest.du | date: 'dd/MM/yyyy'}} au {{selectedRequest.au | date: 'dd/MM/yyyy'}} ?</p>
+      <p>Etes vous sur de vouloir supprimer la demande <br /> de {{getRequestTypeById(selectedRequest.typeId).description}} du {{selectedRequest.from | date: 'dd/MM/yyyy'}} au {{selectedRequest.to | date: 'dd/MM/yyyy'}} ?</p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
@@ -64,20 +64,20 @@
         <tr>
           <td>Type</td>
           <td>
-            <select name="type" ng-model="selectedRequest.type" ng-options="rt.id as rt.description for rt in requestTypes"></select>
+            <select name="type" ng-model="selectedRequest.typeId" ng-options="rt.id as rt.description for rt in requestTypes"></select>
           </td>
         </tr>
         <tr>
           <td>Du</td>
-          <td><input ui-date="{ dateFormat: 'dd/mm/yy' }" type="text" name="from" ng-model="selectedRequest.du"/></td>
+          <td><input ui-date="{ dateFormat: 'dd/mm/yy' }" type="text" name="from" ng-model="selectedRequest.from"/></td>
         </tr>
         <tr>
           <td>Au</td>
-          <td><input ui-date="{ dateFormat: 'dd/mm/yy' }" type="text" name="to" ng-model="selectedRequest.au"/></td>
+          <td><input ui-date="{ dateFormat: 'dd/mm/yy' }" type="text" name="to" ng-model="selectedRequest.to"/></td>
         </tr>
         <tr>
           <td>Observation</td>
-          <td><textarea rows="8" cols="100" style="width:90%" ng-model="selectedRequest.observation"></textarea></td>
+          <td><textarea rows="8" cols="100" style="width:90%" ng-model="selectedRequest.askComment"></textarea></td>
         </tr>
     </table>
     </div>

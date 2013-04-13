@@ -8,20 +8,20 @@
     <div class="row">
       <div class="span3">
         <h4>Date de début : </h4>
-        <div ui-date ng-model="newRequest.du"></div>
+        <div ui-date ng-model="newRequest.from"></div>
       </div>
       <div class="span3">
         <h4>Date de fin : </h4>
-        <div ui-date ng-model="newRequest.au"></div>
+        <div ui-date ng-model="newRequest.to"></div>
       </div>
       <div class="span6">
         <h4>Observations : </h4>
-        <textarea rows="8" cols="100" style="width:100%" ng-model="newRequest.observation"></textarea>
+        <textarea rows="8" cols="100" style="width:100%" ng-model="newRequest.askComment"></textarea>
       </div>
     </div>
     <div style="margin-top:20px;">
       Type de congé :
-      <select name="type" ng-model="newRequest.type" ng-options="rt.id as rt.description for rt in requestTypes"></select>
+      <select name="type" ng-model="newRequest.typeId" ng-options="rt.id as rt.description for rt in requestTypes"></select>
       <input type="submit" ng-click="addRequest(newRequest);" value="Envoyer la demande" class="btn btn-primary pull-right"/>
     </div>
   </div>
