@@ -559,4 +559,4 @@ var sampleUsers = [
     "id" : 80,
     "typeId" : 4
   }
-]
+];

@@ -3,4 +3,4 @@ var sampleUserTypes = [
   {"description" : "Ressources Humaines", "id" : 2},
   {"description" : "Direction", "id" : 3},
   {"description" : "Commercial", "id" : 4}
-]
+];

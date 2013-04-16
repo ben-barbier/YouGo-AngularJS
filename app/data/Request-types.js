@@ -7,4 +7,4 @@ var sampleRequestTypes = [
   { "description" : "Récupération", "id" : 6},
   { "description" : "Repos compensateur", "id" : 7},
   { "description" : "Congé sans solde", "id" : 8}
-]
+];
